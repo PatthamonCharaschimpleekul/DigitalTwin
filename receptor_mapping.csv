@@ -1,0 +1,670 @@
+ChEMBL_Drug_ID,ChEMBL_Target_ID,Interaction_Type,PubChem_CID,Receptor_Name
+CHEMBL615117,CHEMBL615118,Binding/Inhibitor,CID_1,Histamine H2 receptor
+CHEMBL619989,CHEMBL619990,Binding/Inhibitor,CID_2,Beta-2 adrenergic receptor
+CHEMBL624225,CHEMBL622420,Binding/Inhibitor,CID_3,D(1B) dopamine receptor
+CHEMBL628546,CHEMBL874455,Binding/Inhibitor,CID_4,Endothelin-1 receptor
+CHEMBL876435,CHEMBL628778,Binding/Inhibitor,CID_5,EGFR Kinase
+CHEMBL638809,CHEMBL638810,Binding/Inhibitor,CID_6,Histamine H2 receptor
+CHEMBL634007,CHEMBL634008,Binding/Inhibitor,CID_7,Beta-2 adrenergic receptor
+CHEMBL638665,CHEMBL638666,Binding/Inhibitor,CID_8,D(1B) dopamine receptor
+CHEMBL647272,CHEMBL647273,Binding/Inhibitor,CID_9,Endothelin-1 receptor
+CHEMBL651812,CHEMBL651813,Binding/Inhibitor,CID_11,EGFR Kinase
+CHEMBL656312,CHEMBL656313,Binding/Inhibitor,CID_12,Histamine H2 receptor
+CHEMBL656894,CHEMBL656895,Binding/Inhibitor,CID_13,Beta-2 adrenergic receptor
+CHEMBL661550,CHEMBL661551,Binding/Inhibitor,CID_14,D(1B) dopamine receptor
+CHEMBL663823,CHEMBL663824,Binding/Inhibitor,CID_15,Endothelin-1 receptor
+CHEMBL675067,CHEMBL675068,Binding/Inhibitor,CID_16,EGFR Kinase
+CHEMBL670726,CHEMBL670727,Binding/Inhibitor,CID_17,Histamine H2 receptor
+CHEMBL673813,CHEMBL673814,Binding/Inhibitor,CID_18,Beta-2 adrenergic receptor
+CHEMBL680182,CHEMBL680183,Binding/Inhibitor,CID_19,D(1B) dopamine receptor
+CHEMBL689127,CHEMBL688200,Binding/Inhibitor,CID_20,Endothelin-1 receptor
+CHEMBL692911,CHEMBL693069,Binding/Inhibitor,CID_21,EGFR Kinase
+CHEMBL695285,CHEMBL695286,Binding/Inhibitor,CID_22,Histamine H2 receptor
+CHEMBL700289,CHEMBL700290,Binding/Inhibitor,CID_23,Beta-2 adrenergic receptor
+CHEMBL703037,CHEMBL703038,Binding/Inhibitor,CID_24,D(1B) dopamine receptor
+CHEMBL710344,CHEMBL710345,Binding/Inhibitor,CID_26,Endothelin-1 receptor
+CHEMBL707394,CHEMBL707395,Binding/Inhibitor,CID_28,EGFR Kinase
+CHEMBL714146,CHEMBL714147,Binding/Inhibitor,CID_29,Histamine H2 receptor
+CHEMBL717462,CHEMBL717463,Binding/Inhibitor,CID_30,Beta-2 adrenergic receptor
+CHEMBL721620,CHEMBL721621,Binding/Inhibitor,CID_31,D(1B) dopamine receptor
+CHEMBL725882,CHEMBL725883,Binding/Inhibitor,CID_32,Endothelin-1 receptor
+CHEMBL726559,CHEMBL726560,Binding/Inhibitor,CID_33,EGFR Kinase
+CHEMBL731308,CHEMBL732281,Binding/Inhibitor,CID_34,Histamine H2 receptor
+CHEMBL734695,CHEMBL734696,Binding/Inhibitor,CID_35,Beta-2 adrenergic receptor
+CHEMBL743083,CHEMBL743084,Binding/Inhibitor,CID_36,D(1B) dopamine receptor
+CHEMBL744156,CHEMBL744157,Binding/Inhibitor,CID_37,Endothelin-1 receptor
+CHEMBL748034,CHEMBL748035,Binding/Inhibitor,CID_38,EGFR Kinase
+CHEMBL750122,CHEMBL750123,Binding/Inhibitor,CID_39,Histamine H2 receptor
+CHEMBL754981,CHEMBL882413,Binding/Inhibitor,CID_40,Beta-2 adrenergic receptor
+CHEMBL758440,CHEMBL758441,Binding/Inhibitor,CID_41,D(1B) dopamine receptor
+CHEMBL766157,CHEMBL766158,Binding/Inhibitor,CID_42,Endothelin-1 receptor
+CHEMBL766372,CHEMBL766373,Binding/Inhibitor,CID_43,EGFR Kinase
+CHEMBL771334,CHEMBL771335,Binding/Inhibitor,CID_44,Histamine H2 receptor
+CHEMBL780155,CHEMBL780156,Binding/Inhibitor,CID_45,Beta-2 adrenergic receptor
+CHEMBL779936,CHEMBL779937,Binding/Inhibitor,CID_46,D(1B) dopamine receptor
+CHEMBL785013,CHEMBL785014,Binding/Inhibitor,CID_47,Endothelin-1 receptor
+CHEMBL786494,CHEMBL786495,Binding/Inhibitor,CID_48,EGFR Kinase
+CHEMBL787297,CHEMBL787298,Binding/Inhibitor,CID_49,Histamine H2 receptor
+CHEMBL796612,CHEMBL796613,Binding/Inhibitor,CID_50,Beta-2 adrenergic receptor
+CHEMBL798763,CHEMBL798764,Binding/Inhibitor,CID_51,D(1B) dopamine receptor
+CHEMBL802188,CHEMBL802189,Binding/Inhibitor,CID_52,Endothelin-1 receptor
+CHEMBL803254,CHEMBL803255,Binding/Inhibitor,CID_53,EGFR Kinase
+CHEMBL813930,CHEMBL813931,Binding/Inhibitor,CID_54,Histamine H2 receptor
+CHEMBL810104,CHEMBL810105,Binding/Inhibitor,CID_55,Beta-2 adrenergic receptor
+CHEMBL815807,CHEMBL815808,Binding/Inhibitor,CID_56,D(1B) dopamine receptor
+CHEMBL822008,CHEMBL822009,Binding/Inhibitor,CID_57,Endothelin-1 receptor
+CHEMBL842355,CHEMBL842356,Binding/Inhibitor,CID_58,EGFR Kinase
+CHEMBL849748,CHEMBL849749,Binding/Inhibitor,CID_59,Histamine H2 receptor
+CHEMBL852907,CHEMBL852105,Binding/Inhibitor,CID_60,Beta-2 adrenergic receptor
+CHEMBL830190,CHEMBL830191,Binding/Inhibitor,CID_61,D(1B) dopamine receptor
+CHEMBL832610,CHEMBL832611,Binding/Inhibitor,CID_62,Endothelin-1 receptor
+CHEMBL833160,CHEMBL833161,Binding/Inhibitor,CID_63,EGFR Kinase
+CHEMBL837067,CHEMBL837068,Binding/Inhibitor,CID_64,Histamine H2 receptor
+CHEMBL880567,CHEMBL880568,Binding/Inhibitor,CID_65,Beta-2 adrenergic receptor
+CHEMBL853043,CHEMBL853044,Binding/Inhibitor,CID_66,D(1B) dopamine receptor
+CHEMBL861510,CHEMBL861511,Binding/Inhibitor,CID_67,Endothelin-1 receptor
+CHEMBL867334,CHEMBL866149,Binding/Inhibitor,CID_68,EGFR Kinase
+CHEMBL907064,CHEMBL907676,Binding/Inhibitor,CID_69,Histamine H2 receptor
+CHEMBL854624,CHEMBL854625,Binding/Inhibitor,CID_70,Beta-2 adrenergic receptor
+CHEMBL917283,CHEMBL917284,Binding/Inhibitor,CID_71,D(1B) dopamine receptor
+CHEMBL904650,CHEMBL904651,Binding/Inhibitor,CID_72,Endothelin-1 receptor
+CHEMBL890150,CHEMBL890151,Binding/Inhibitor,CID_73,EGFR Kinase
+CHEMBL894586,CHEMBL894587,Binding/Inhibitor,CID_74,Histamine H2 receptor
+CHEMBL899224,CHEMBL899225,Binding/Inhibitor,CID_75,Beta-2 adrenergic receptor
+CHEMBL885498,CHEMBL885499,Binding/Inhibitor,CID_76,D(1B) dopamine receptor
+CHEMBL924455,CHEMBL924456,Binding/Inhibitor,CID_77,Endothelin-1 receptor
+CHEMBL928915,CHEMBL928916,Binding/Inhibitor,CID_78,EGFR Kinase
+CHEMBL924882,CHEMBL924883,Binding/Inhibitor,CID_79,Histamine H2 receptor
+CHEMBL952857,CHEMBL952072,Binding/Inhibitor,CID_80,Beta-2 adrenergic receptor
+CHEMBL937470,CHEMBL937471,Binding/Inhibitor,CID_81,D(1B) dopamine receptor
+CHEMBL1015525,CHEMBL1015526,Binding/Inhibitor,CID_82,Endothelin-1 receptor
+CHEMBL1012353,CHEMBL1015776,Binding/Inhibitor,CID_84,EGFR Kinase
+CHEMBL989977,CHEMBL989978,Binding/Inhibitor,CID_85,Histamine H2 receptor
+CHEMBL943257,CHEMBL943258,Binding/Inhibitor,CID_86,Beta-2 adrenergic receptor
+CHEMBL1002102,CHEMBL1002103,Binding/Inhibitor,CID_87,D(1B) dopamine receptor
+CHEMBL985056,CHEMBL985057,Binding/Inhibitor,CID_88,Endothelin-1 receptor
+CHEMBL948586,CHEMBL948587,Binding/Inhibitor,CID_89,EGFR Kinase
+CHEMBL1005550,CHEMBL1005551,Binding/Inhibitor,CID_90,Histamine H2 receptor
+CHEMBL979147,CHEMBL979148,Binding/Inhibitor,CID_91,Beta-2 adrenergic receptor
+CHEMBL955448,CHEMBL955449,Binding/Inhibitor,CID_92,D(1B) dopamine receptor
+CHEMBL1007413,CHEMBL1007414,Binding/Inhibitor,CID_93,Endothelin-1 receptor
+CHEMBL974761,CHEMBL974762,Binding/Inhibitor,CID_94,EGFR Kinase
+CHEMBL979614,CHEMBL979615,Binding/Inhibitor,CID_95,Histamine H2 receptor
+CHEMBL982784,CHEMBL982785,Binding/Inhibitor,CID_96,Beta-2 adrenergic receptor
+CHEMBL1036577,CHEMBL1036578,Binding/Inhibitor,CID_97,D(1B) dopamine receptor
+CHEMBL1017803,CHEMBL1017804,Binding/Inhibitor,CID_98,Endothelin-1 receptor
+CHEMBL1029970,CHEMBL1029971,Binding/Inhibitor,CID_99,EGFR Kinase
+CHEMBL1001741,CHEMBL1001742,Binding/Inhibitor,CID_100,Histamine H2 receptor
+CHEMBL954246,CHEMBL954247,Binding/Inhibitor,CID_101,Beta-2 adrenergic receptor
+CHEMBL1009192,CHEMBL1009193,Binding/Inhibitor,CID_102,D(1B) dopamine receptor
+CHEMBL965834,CHEMBL965835,Binding/Inhibitor,CID_103,Endothelin-1 receptor
+CHEMBL1035327,CHEMBL1035328,Binding/Inhibitor,CID_104,EGFR Kinase
+CHEMBL1032948,CHEMBL1032949,Binding/Inhibitor,CID_105,Histamine H2 receptor
+CHEMBL1056312,CHEMBL1056313,Binding/Inhibitor,CID_106,Beta-2 adrenergic receptor
+CHEMBL1058178,CHEMBL1058179,Binding/Inhibitor,CID_107,D(1B) dopamine receptor
+CHEMBL1052130,CHEMBL1052131,Binding/Inhibitor,CID_108,Endothelin-1 receptor
+CHEMBL1037606,CHEMBL1037607,Binding/Inhibitor,CID_109,EGFR Kinase
+CHEMBL1041684,CHEMBL1041685,Binding/Inhibitor,CID_110,Histamine H2 receptor
+CHEMBL1049808,CHEMBL1049809,Binding/Inhibitor,CID_111,Beta-2 adrenergic receptor
+CHEMBL1049489,CHEMBL1049490,Binding/Inhibitor,CID_112,D(1B) dopamine receptor
+CHEMBL1070798,CHEMBL1070799,Binding/Inhibitor,CID_113,Endothelin-1 receptor
+CHEMBL1074299,CHEMBL1074300,Binding/Inhibitor,CID_114,EGFR Kinase
+CHEMBL1101944,CHEMBL1101945,Binding/Inhibitor,CID_115,Histamine H2 receptor
+CHEMBL1109348,CHEMBL1109349,Binding/Inhibitor,CID_116,Beta-2 adrenergic receptor
+CHEMBL1107925,CHEMBL1107926,Binding/Inhibitor,CID_117,D(1B) dopamine receptor
+CHEMBL1104660,CHEMBL1104661,Binding/Inhibitor,CID_118,Endothelin-1 receptor
+CHEMBL1112834,CHEMBL1112835,Binding/Inhibitor,CID_119,EGFR Kinase
+CHEMBL1167004,CHEMBL1167005,Binding/Inhibitor,CID_120,Histamine H2 receptor
+CHEMBL1176911,CHEMBL1176912,Binding/Inhibitor,CID_121,Beta-2 adrenergic receptor
+CHEMBL1218478,CHEMBL1218479,Binding/Inhibitor,CID_122,D(1B) dopamine receptor
+CHEMBL1219459,CHEMBL1219460,Binding/Inhibitor,CID_123,Endothelin-1 receptor
+CHEMBL1226805,CHEMBL1226806,Binding/Inhibitor,CID_124,EGFR Kinase
+CHEMBL1247222,CHEMBL1247223,Binding/Inhibitor,CID_125,Histamine H2 receptor
+CHEMBL1253084,CHEMBL1253085,Binding/Inhibitor,CID_126,Beta-2 adrenergic receptor
+CHEMBL1261456,CHEMBL1261457,Binding/Inhibitor,CID_127,D(1B) dopamine receptor
+CHEMBL1266193,CHEMBL1266194,Binding/Inhibitor,CID_128,Endothelin-1 receptor
+CHEMBL1266980,CHEMBL1266981,Binding/Inhibitor,CID_129,EGFR Kinase
+CHEMBL1279073,CHEMBL1279074,Binding/Inhibitor,CID_130,Histamine H2 receptor
+CHEMBL1281863,CHEMBL1281864,Binding/Inhibitor,CID_131,Beta-2 adrenergic receptor
+CHEMBL1285182,CHEMBL1285183,Binding/Inhibitor,CID_132,D(1B) dopamine receptor
+CHEMBL1291853,CHEMBL1291854,Binding/Inhibitor,CID_133,Endothelin-1 receptor
+CHEMBL1633513,CHEMBL1633514,Binding/Inhibitor,CID_134,EGFR Kinase
+CHEMBL1639511,CHEMBL1639512,Binding/Inhibitor,CID_135,Histamine H2 receptor
+CHEMBL1647588,CHEMBL1647589,Binding/Inhibitor,CID_137,Beta-2 adrenergic receptor
+CHEMBL1655283,CHEMBL1655284,Binding/Inhibitor,CID_138,D(1B) dopamine receptor
+CHEMBL1665715,CHEMBL1665716,Binding/Inhibitor,CID_139,Endothelin-1 receptor
+CHEMBL1653943,CHEMBL1653944,Binding/Inhibitor,CID_140,EGFR Kinase
+CHEMBL1660221,CHEMBL1660222,Binding/Inhibitor,CID_141,Histamine H2 receptor
+CHEMBL1670590,CHEMBL1670591,Binding/Inhibitor,CID_142,Beta-2 adrenergic receptor
+CHEMBL1673734,CHEMBL1673735,Binding/Inhibitor,CID_144,D(1B) dopamine receptor
+CHEMBL1677468,CHEMBL1677469,Binding/Inhibitor,CID_145,Endothelin-1 receptor
+CHEMBL1694719,CHEMBL1694720,Binding/Inhibitor,CID_149,EGFR Kinase
+CHEMBL1689906,CHEMBL1689907,Binding/Inhibitor,CID_150,Histamine H2 receptor
+CHEMBL1693485,CHEMBL1693486,Binding/Inhibitor,CID_151,Beta-2 adrenergic receptor
+CHEMBL1763920,CHEMBL1763921,Binding/Inhibitor,CID_152,D(1B) dopamine receptor
+CHEMBL1772903,CHEMBL1772904,Binding/Inhibitor,CID_153,Endothelin-1 receptor
+CHEMBL1780821,CHEMBL1780822,Binding/Inhibitor,CID_154,EGFR Kinase
+CHEMBL1798323,CHEMBL1798324,Binding/Inhibitor,CID_155,Histamine H2 receptor
+CHEMBL1805189,CHEMBL1805190,Binding/Inhibitor,CID_156,Beta-2 adrenergic receptor
+CHEMBL1815631,CHEMBL1815632,Binding/Inhibitor,CID_157,D(1B) dopamine receptor
+CHEMBL1821057,CHEMBL1821058,Binding/Inhibitor,CID_158,Endothelin-1 receptor
+CHEMBL1832731,CHEMBL1832732,Binding/Inhibitor,CID_159,EGFR Kinase
+CHEMBL1839438,CHEMBL1839439,Binding/Inhibitor,CID_160,Histamine H2 receptor
+CHEMBL1913950,CHEMBL1913951,Binding/Inhibitor,CID_161,Beta-2 adrenergic receptor
+CHEMBL1924660,CHEMBL1924661,Binding/Inhibitor,CID_162,D(1B) dopamine receptor
+CHEMBL1930397,CHEMBL1930398,Binding/Inhibitor,CID_163,Endothelin-1 receptor
+CHEMBL1938054,CHEMBL1938055,Binding/Inhibitor,CID_164,EGFR Kinase
+CHEMBL1947662,CHEMBL1947663,Binding/Inhibitor,CID_165,Histamine H2 receptor
+CHEMBL1953040,CHEMBL1953041,Binding/Inhibitor,CID_166,Beta-2 adrenergic receptor
+CHEMBL1961994,CHEMBL1961995,Binding/Inhibitor,CID_167,D(1B) dopamine receptor
+CHEMBL2020049,CHEMBL2020050,Binding/Inhibitor,CID_168,Endothelin-1 receptor
+CHEMBL2025894,CHEMBL2025895,Binding/Inhibitor,CID_169,EGFR Kinase
+CHEMBL2038355,CHEMBL2038356,Binding/Inhibitor,CID_172,Histamine H2 receptor
+CHEMBL2044717,CHEMBL2044718,Binding/Inhibitor,CID_173,Beta-2 adrenergic receptor
+CHEMBL2060260,CHEMBL2060261,Binding/Inhibitor,CID_174,D(1B) dopamine receptor
+CHEMBL2067268,CHEMBL2067312,Binding/Inhibitor,CID_175,Endothelin-1 receptor
+CHEMBL2077190,CHEMBL2077191,Binding/Inhibitor,CID_176,EGFR Kinase
+CHEMBL2090003,CHEMBL2090004,Binding/Inhibitor,CID_177,Histamine H2 receptor
+CHEMBL2148731,CHEMBL2148732,Binding/Inhibitor,CID_178,Beta-2 adrenergic receptor
+CHEMBL2155058,CHEMBL2155059,Binding/Inhibitor,CID_179,D(1B) dopamine receptor
+CHEMBL2162953,CHEMBL2162954,Binding/Inhibitor,CID_180,Endothelin-1 receptor
+CHEMBL2166440,CHEMBL2166441,Binding/Inhibitor,CID_181,EGFR Kinase
+CHEMBL2175580,CHEMBL2175581,Binding/Inhibitor,CID_182,Histamine H2 receptor
+CHEMBL2184858,CHEMBL2184859,Binding/Inhibitor,CID_183,Beta-2 adrenergic receptor
+CHEMBL2209155,CHEMBL2209156,Binding/Inhibitor,CID_184,D(1B) dopamine receptor
+CHEMBL2210313,CHEMBL2210314,Binding/Inhibitor,CID_185,Endothelin-1 receptor
+CHEMBL2217195,CHEMBL2217196,Binding/Inhibitor,CID_186,EGFR Kinase
+CHEMBL3050851,CHEMBL3050852,Binding/Inhibitor,CID_187,Histamine H2 receptor
+CHEMBL3061201,CHEMBL3061202,Binding/Inhibitor,CID_188,Beta-2 adrenergic receptor
+CHEMBL3065014,CHEMBL3065015,Binding/Inhibitor,CID_189,D(1B) dopamine receptor
+CHEMBL3067977,CHEMBL3054886,Binding/Inhibitor,CID_190,Endothelin-1 receptor
+CHEMBL3055453,CHEMBL3062221,Binding/Inhibitor,CID_191,EGFR Kinase
+CHEMBL3058678,CHEMBL3058679,Binding/Inhibitor,CID_192,Histamine H2 receptor
+CHEMBL3056761,CHEMBL3079926,Binding/Inhibitor,CID_193,Beta-2 adrenergic receptor
+CHEMBL3077702,CHEMBL3077703,Binding/Inhibitor,CID_194,D(1B) dopamine receptor
+CHEMBL3079807,CHEMBL3079808,Binding/Inhibitor,CID_195,Endothelin-1 receptor
+CHEMBL3082398,CHEMBL3082399,Binding/Inhibitor,CID_196,EGFR Kinase
+CHEMBL3069353,CHEMBL3069354,Binding/Inhibitor,CID_197,Histamine H2 receptor
+CHEMBL2320148,CHEMBL2320149,Binding/Inhibitor,CID_198,Beta-2 adrenergic receptor
+CHEMBL2327875,CHEMBL2327876,Binding/Inhibitor,CID_199,D(1B) dopamine receptor
+CHEMBL2339905,CHEMBL2339906,Binding/Inhibitor,CID_200,Endothelin-1 receptor
+CHEMBL2341656,CHEMBL2341657,Binding/Inhibitor,CID_201,EGFR Kinase
+CHEMBL2350969,CHEMBL2350970,Binding/Inhibitor,CID_202,Histamine H2 receptor
+CHEMBL2380137,CHEMBL2380138,Binding/Inhibitor,CID_203,Beta-2 adrenergic receptor
+CHEMBL2383615,CHEMBL2383616,Binding/Inhibitor,CID_204,D(1B) dopamine receptor
+CHEMBL2395534,CHEMBL2395535,Binding/Inhibitor,CID_205,Endothelin-1 receptor
+CHEMBL2399071,CHEMBL2399072,Binding/Inhibitor,CID_206,EGFR Kinase
+CHEMBL2406139,CHEMBL2406140,Binding/Inhibitor,CID_207,Histamine H2 receptor
+CHEMBL2415875,CHEMBL2415876,Binding/Inhibitor,CID_208,Beta-2 adrenergic receptor
+CHEMBL2421965,CHEMBL2421966,Binding/Inhibitor,CID_209,D(1B) dopamine receptor
+CHEMBL2427088,CHEMBL2427089,Binding/Inhibitor,CID_210,Endothelin-1 receptor
+CHEMBL2438442,CHEMBL2438443,Binding/Inhibitor,CID_211,EGFR Kinase
+CHEMBL2443502,CHEMBL2443503,Binding/Inhibitor,CID_212,Histamine H2 receptor
+CHEMBL3090704,CHEMBL3090705,Binding/Inhibitor,CID_213,Beta-2 adrenergic receptor
+CHEMBL3096361,CHEMBL3096362,Binding/Inhibitor,CID_214,D(1B) dopamine receptor
+CHEMBL3101405,CHEMBL3101406,Binding/Inhibitor,CID_215,Endothelin-1 receptor
+CHEMBL3111300,CHEMBL3111301,Binding/Inhibitor,CID_216,EGFR Kinase
+CHEMBL3118171,CHEMBL3118172,Binding/Inhibitor,CID_217,Histamine H2 receptor
+CHEMBL3128626,CHEMBL3128627,Binding/Inhibitor,CID_219,Beta-2 adrenergic receptor
+CHEMBL3131437,CHEMBL3131438,Binding/Inhibitor,CID_220,D(1B) dopamine receptor
+CHEMBL3214965,CHEMBL3214966,Binding/Inhibitor,CID_221,Endothelin-1 receptor
+CHEMBL3226491,CHEMBL3226492,Binding/Inhibitor,CID_222,EGFR Kinase
+CHEMBL3238802,CHEMBL3238886,Binding/Inhibitor,CID_223,Histamine H2 receptor
+CHEMBL3241426,CHEMBL3241427,Binding/Inhibitor,CID_224,Beta-2 adrenergic receptor
+CHEMBL3255078,CHEMBL3255079,Binding/Inhibitor,CID_225,D(1B) dopamine receptor
+CHEMBL3252502,CHEMBL3252503,Binding/Inhibitor,CID_226,Endothelin-1 receptor
+CHEMBL3267177,CHEMBL3267178,Binding/Inhibitor,CID_227,EGFR Kinase
+CHEMBL3269416,CHEMBL3269417,Binding/Inhibitor,CID_228,Histamine H2 receptor
+CHEMBL3279574,CHEMBL3279575,Binding/Inhibitor,CID_229,Beta-2 adrenergic receptor
+CHEMBL3284800,CHEMBL3284801,Binding/Inhibitor,CID_230,D(1B) dopamine receptor
+CHEMBL3292576,CHEMBL3292577,Binding/Inhibitor,CID_231,Endothelin-1 receptor
+CHEMBL3299413,CHEMBL3299414,Binding/Inhibitor,CID_232,EGFR Kinase
+CHEMBL3384512,CHEMBL3384513,Binding/Inhibitor,CID_233,Histamine H2 receptor
+CHEMBL3387223,CHEMBL3387224,Binding/Inhibitor,CID_234,Beta-2 adrenergic receptor
+CHEMBL3389829,CHEMBL3389830,Binding/Inhibitor,CID_236,D(1B) dopamine receptor
+CHEMBL3373552,CHEMBL3373553,Binding/Inhibitor,CID_237,Endothelin-1 receptor
+CHEMBL3375646,CHEMBL3375647,Binding/Inhibitor,CID_238,EGFR Kinase
+CHEMBL3365459,CHEMBL3365460,Binding/Inhibitor,CID_239,Histamine H2 receptor
+CHEMBL3366420,CHEMBL3366421,Binding/Inhibitor,CID_240,Beta-2 adrenergic receptor
+CHEMBL3367757,CHEMBL3367758,Binding/Inhibitor,CID_241,D(1B) dopamine receptor
+CHEMBL3399165,CHEMBL3399166,Binding/Inhibitor,CID_242,Endothelin-1 receptor
+CHEMBL3411060,CHEMBL3411061,Binding/Inhibitor,CID_243,EGFR Kinase
+CHEMBL3421301,CHEMBL3421302,Binding/Inhibitor,CID_244,Histamine H2 receptor
+CHEMBL3424386,CHEMBL3424387,Binding/Inhibitor,CID_245,Beta-2 adrenergic receptor
+CHEMBL3429561,CHEMBL3429562,Binding/Inhibitor,CID_246,D(1B) dopamine receptor
+CHEMBL3540896,CHEMBL3540897,Binding/Inhibitor,CID_247,Endothelin-1 receptor
+CHEMBL3542081,CHEMBL3542082,Binding/Inhibitor,CID_248,EGFR Kinase
+CHEMBL3532706,CHEMBL3532707,Binding/Inhibitor,CID_249,Histamine H2 receptor
+CHEMBL3530160,CHEMBL3530161,Binding/Inhibitor,CID_250,Beta-2 adrenergic receptor
+CHEMBL3580096,CHEMBL3580097,Binding/Inhibitor,CID_251,D(1B) dopamine receptor
+CHEMBL3584990,CHEMBL3584991,Binding/Inhibitor,CID_253,Endothelin-1 receptor
+CHEMBL3591185,CHEMBL3591186,Binding/Inhibitor,CID_254,EGFR Kinase
+CHEMBL3599975,CHEMBL3599976,Binding/Inhibitor,CID_255,Histamine H2 receptor
+CHEMBL3606656,CHEMBL3606657,Binding/Inhibitor,CID_256,Beta-2 adrenergic receptor
+CHEMBL3611622,CHEMBL3611623,Binding/Inhibitor,CID_257,D(1B) dopamine receptor
+CHEMBL3619655,CHEMBL3619656,Binding/Inhibitor,CID_258,Endothelin-1 receptor
+CHEMBL3627105,CHEMBL3627106,Binding/Inhibitor,CID_259,EGFR Kinase
+CHEMBL3635311,CHEMBL3635312,Binding/Inhibitor,CID_260,Histamine H2 receptor
+CHEMBL3705429,CHEMBL3705430,Binding/Inhibitor,CID_261,Beta-2 adrenergic receptor
+CHEMBL3707767,CHEMBL3707768,Binding/Inhibitor,CID_262,D(1B) dopamine receptor
+CHEMBL3738819,CHEMBL3738820,Binding/Inhibitor,CID_263,Endothelin-1 receptor
+CHEMBL3743704,CHEMBL3743705,Binding/Inhibitor,CID_264,EGFR Kinase
+CHEMBL3748001,CHEMBL3748002,Binding/Inhibitor,CID_265,Histamine H2 receptor
+CHEMBL3760368,CHEMBL3760369,Binding/Inhibitor,CID_266,Beta-2 adrenergic receptor
+CHEMBL3767396,CHEMBL3767397,Binding/Inhibitor,CID_267,D(1B) dopamine receptor
+CHEMBL3772025,CHEMBL3772026,Binding/Inhibitor,CID_268,Endothelin-1 receptor
+CHEMBL3778314,CHEMBL3778315,Binding/Inhibitor,CID_269,EGFR Kinase
+CHEMBL3782170,CHEMBL3782171,Binding/Inhibitor,CID_270,Histamine H2 receptor
+CHEMBL3790524,CHEMBL3790525,Binding/Inhibitor,CID_271,Beta-2 adrenergic receptor
+CHEMBL3804000,CHEMBL3804001,Binding/Inhibitor,CID_273,D(1B) dopamine receptor
+CHEMBL3801904,CHEMBL3801905,Binding/Inhibitor,CID_274,Endothelin-1 receptor
+CHEMBL3812963,CHEMBL3812964,Binding/Inhibitor,CID_275,EGFR Kinase
+CHEMBL3815646,CHEMBL3815647,Binding/Inhibitor,CID_276,Histamine H2 receptor
+CHEMBL3825843,CHEMBL3825844,Binding/Inhibitor,CID_277,Beta-2 adrenergic receptor
+CHEMBL3829760,CHEMBL3829761,Binding/Inhibitor,CID_278,D(1B) dopamine receptor
+CHEMBL3856358,CHEMBL3856359,Binding/Inhibitor,CID_279,Endothelin-1 receptor
+CHEMBL3859883,CHEMBL3859884,Binding/Inhibitor,CID_280,EGFR Kinase
+CHEMBL3863526,CHEMBL3863527,Binding/Inhibitor,CID_281,Histamine H2 receptor
+CHEMBL3867206,CHEMBL3867207,Binding/Inhibitor,CID_282,Beta-2 adrenergic receptor
+CHEMBL3870860,CHEMBL3870861,Binding/Inhibitor,CID_283,D(1B) dopamine receptor
+CHEMBL3874485,CHEMBL3874486,Binding/Inhibitor,CID_284,Endothelin-1 receptor
+CHEMBL3878169,CHEMBL3878170,Binding/Inhibitor,CID_285,EGFR Kinase
+CHEMBL3881711,CHEMBL3881712,Binding/Inhibitor,CID_286,Histamine H2 receptor
+CHEMBL3887561,CHEMBL3887562,Binding/Inhibitor,CID_287,Beta-2 adrenergic receptor
+CHEMBL3888484,CHEMBL3888485,Binding/Inhibitor,CID_288,D(1B) dopamine receptor
+CHEMBL3889295,CHEMBL3889296,Binding/Inhibitor,CID_289,Endothelin-1 receptor
+CHEMBL3994898,CHEMBL3994899,Binding/Inhibitor,CID_290,EGFR Kinase
+CHEMBL3998521,CHEMBL3998522,Binding/Inhibitor,CID_291,Histamine H2 receptor
+CHEMBL4002092,CHEMBL4002093,Binding/Inhibitor,CID_292,Beta-2 adrenergic receptor
+CHEMBL4005876,CHEMBL4005877,Binding/Inhibitor,CID_293,D(1B) dopamine receptor
+CHEMBL4009446,CHEMBL4009447,Binding/Inhibitor,CID_294,Endothelin-1 receptor
+CHEMBL4012936,CHEMBL4012937,Binding/Inhibitor,CID_296,EGFR Kinase
+CHEMBL4016546,CHEMBL4016547,Binding/Inhibitor,CID_297,Histamine H2 receptor
+CHEMBL4020088,CHEMBL4020089,Binding/Inhibitor,CID_298,Beta-2 adrenergic receptor
+CHEMBL4023801,CHEMBL4023802,Binding/Inhibitor,CID_299,D(1B) dopamine receptor
+CHEMBL4027341,CHEMBL4027342,Binding/Inhibitor,CID_300,Endothelin-1 receptor
+CHEMBL4031056,CHEMBL4031057,Binding/Inhibitor,CID_301,EGFR Kinase
+CHEMBL4034966,CHEMBL4034967,Binding/Inhibitor,CID_302,Histamine H2 receptor
+CHEMBL4038581,CHEMBL4038582,Binding/Inhibitor,CID_303,Beta-2 adrenergic receptor
+CHEMBL4042041,CHEMBL4042042,Binding/Inhibitor,CID_304,D(1B) dopamine receptor
+CHEMBL4045726,CHEMBL4045727,Binding/Inhibitor,CID_305,Endothelin-1 receptor
+CHEMBL4049466,CHEMBL4049467,Binding/Inhibitor,CID_306,EGFR Kinase
+CHEMBL4053218,CHEMBL4053219,Binding/Inhibitor,CID_307,Histamine H2 receptor
+CHEMBL4056712,CHEMBL4056713,Binding/Inhibitor,CID_308,Beta-2 adrenergic receptor
+CHEMBL4119238,CHEMBL4119239,Binding/Inhibitor,CID_309,D(1B) dopamine receptor
+CHEMBL4122913,CHEMBL4122914,Binding/Inhibitor,CID_310,Endothelin-1 receptor
+CHEMBL4131285,CHEMBL4131286,Binding/Inhibitor,CID_311,EGFR Kinase
+CHEMBL4134625,CHEMBL4134626,Binding/Inhibitor,CID_312,Histamine H2 receptor
+CHEMBL4138472,CHEMBL4138473,Binding/Inhibitor,CID_313,Beta-2 adrenergic receptor
+CHEMBL4141959,CHEMBL4141960,Binding/Inhibitor,CID_314,D(1B) dopamine receptor
+CHEMBL4145703,CHEMBL4145704,Binding/Inhibitor,CID_315,Endothelin-1 receptor
+CHEMBL4149146,CHEMBL4149147,Binding/Inhibitor,CID_316,EGFR Kinase
+CHEMBL4152826,CHEMBL4152827,Binding/Inhibitor,CID_317,Histamine H2 receptor
+CHEMBL4156241,CHEMBL4156242,Binding/Inhibitor,CID_318,Beta-2 adrenergic receptor
+CHEMBL4178450,CHEMBL4178451,Binding/Inhibitor,CID_319,D(1B) dopamine receptor
+CHEMBL4181893,CHEMBL4181894,Binding/Inhibitor,CID_320,Endothelin-1 receptor
+CHEMBL4185749,CHEMBL4185750,Binding/Inhibitor,CID_321,EGFR Kinase
+CHEMBL4189231,CHEMBL4189232,Binding/Inhibitor,CID_322,Histamine H2 receptor
+CHEMBL4192927,CHEMBL4192928,Binding/Inhibitor,CID_323,Beta-2 adrenergic receptor
+CHEMBL4196653,CHEMBL4196654,Binding/Inhibitor,CID_324,D(1B) dopamine receptor
+CHEMBL4200116,CHEMBL4200117,Binding/Inhibitor,CID_325,Endothelin-1 receptor
+CHEMBL4220481,CHEMBL4220482,Binding/Inhibitor,CID_326,EGFR Kinase
+CHEMBL4223979,CHEMBL4223980,Binding/Inhibitor,CID_328,Histamine H2 receptor
+CHEMBL4232249,CHEMBL4232250,Binding/Inhibitor,CID_329,Beta-2 adrenergic receptor
+CHEMBL4235879,CHEMBL4235880,Binding/Inhibitor,CID_330,D(1B) dopamine receptor
+CHEMBL4253909,CHEMBL4253910,Binding/Inhibitor,CID_331,Endothelin-1 receptor
+CHEMBL4257635,CHEMBL4257636,Binding/Inhibitor,CID_332,EGFR Kinase
+CHEMBL4261132,CHEMBL4261133,Binding/Inhibitor,CID_333,Histamine H2 receptor
+CHEMBL4264792,CHEMBL4264793,Binding/Inhibitor,CID_334,Beta-2 adrenergic receptor
+CHEMBL4268534,CHEMBL4268535,Binding/Inhibitor,CID_335,D(1B) dopamine receptor
+CHEMBL4272258,CHEMBL4272259,Binding/Inhibitor,CID_336,Endothelin-1 receptor
+CHEMBL4275774,CHEMBL4275775,Binding/Inhibitor,CID_337,EGFR Kinase
+CHEMBL4306926,CHEMBL4306927,Binding/Inhibitor,CID_338,Histamine H2 receptor
+CHEMBL4310397,CHEMBL4310398,Binding/Inhibitor,CID_339,Beta-2 adrenergic receptor
+CHEMBL4313980,CHEMBL4313981,Binding/Inhibitor,CID_340,D(1B) dopamine receptor
+CHEMBL4317350,CHEMBL4317351,Binding/Inhibitor,CID_341,Endothelin-1 receptor
+CHEMBL4320404,CHEMBL4320405,Binding/Inhibitor,CID_342,EGFR Kinase
+CHEMBL4323937,CHEMBL4323938,Binding/Inhibitor,CID_343,Histamine H2 receptor
+CHEMBL4327416,CHEMBL4327417,Binding/Inhibitor,CID_344,Beta-2 adrenergic receptor
+CHEMBL4331123,CHEMBL4331124,Binding/Inhibitor,CID_345,D(1B) dopamine receptor
+CHEMBL4334641,CHEMBL4334642,Binding/Inhibitor,CID_346,Endothelin-1 receptor
+CHEMBL4337760,CHEMBL4337761,Binding/Inhibitor,CID_347,EGFR Kinase
+CHEMBL4341239,CHEMBL4341240,Binding/Inhibitor,CID_348,Histamine H2 receptor
+CHEMBL4344846,CHEMBL4344847,Binding/Inhibitor,CID_349,Beta-2 adrenergic receptor
+CHEMBL4348262,CHEMBL4348263,Binding/Inhibitor,CID_350,D(1B) dopamine receptor
+CHEMBL4351841,CHEMBL4351842,Binding/Inhibitor,CID_351,Endothelin-1 receptor
+CHEMBL4355326,CHEMBL4355327,Binding/Inhibitor,CID_352,EGFR Kinase
+CHEMBL4358581,CHEMBL4358582,Binding/Inhibitor,CID_353,Histamine H2 receptor
+CHEMBL4362009,CHEMBL4362010,Binding/Inhibitor,CID_354,Beta-2 adrenergic receptor
+CHEMBL4365569,CHEMBL4365570,Binding/Inhibitor,CID_355,D(1B) dopamine receptor
+CHEMBL4369041,CHEMBL4369042,Binding/Inhibitor,CID_356,Endothelin-1 receptor
+CHEMBL4372646,CHEMBL4372647,Binding/Inhibitor,CID_357,EGFR Kinase
+CHEMBL4376114,CHEMBL4376115,Binding/Inhibitor,CID_358,Histamine H2 receptor
+CHEMBL4379529,CHEMBL4379530,Binding/Inhibitor,CID_359,Beta-2 adrenergic receptor
+CHEMBL4382820,CHEMBL4382821,Binding/Inhibitor,CID_360,D(1B) dopamine receptor
+CHEMBL4386313,CHEMBL4386314,Binding/Inhibitor,CID_361,Endothelin-1 receptor
+CHEMBL4389761,CHEMBL4389762,Binding/Inhibitor,CID_362,EGFR Kinase
+CHEMBL4393157,CHEMBL4393158,Binding/Inhibitor,CID_363,Histamine H2 receptor
+CHEMBL4396591,CHEMBL4396592,Binding/Inhibitor,CID_364,Beta-2 adrenergic receptor
+CHEMBL4400050,CHEMBL4400051,Binding/Inhibitor,CID_365,D(1B) dopamine receptor
+CHEMBL4403690,CHEMBL4403691,Binding/Inhibitor,CID_366,Endothelin-1 receptor
+CHEMBL4407064,CHEMBL4407065,Binding/Inhibitor,CID_368,EGFR Kinase
+CHEMBL4410365,CHEMBL4410366,Binding/Inhibitor,CID_370,Histamine H2 receptor
+CHEMBL4413925,CHEMBL4413926,Binding/Inhibitor,CID_371,Beta-2 adrenergic receptor
+CHEMBL4417402,CHEMBL4417403,Binding/Inhibitor,CID_372,D(1B) dopamine receptor
+CHEMBL4420727,CHEMBL4420728,Binding/Inhibitor,CID_374,Endothelin-1 receptor
+CHEMBL4424185,CHEMBL4424186,Binding/Inhibitor,CID_375,EGFR Kinase
+CHEMBL4427928,CHEMBL4427929,Binding/Inhibitor,CID_376,Histamine H2 receptor
+CHEMBL4431762,CHEMBL4431763,Binding/Inhibitor,CID_377,Beta-2 adrenergic receptor
+CHEMBL4477654,CHEMBL4477655,Binding/Inhibitor,CID_378,D(1B) dopamine receptor
+CHEMBL4481148,CHEMBL4481149,Binding/Inhibitor,CID_379,Endothelin-1 receptor
+CHEMBL4604441,CHEMBL4604442,Binding/Inhibitor,CID_380,EGFR Kinase
+CHEMBL4611229,CHEMBL4611230,Binding/Inhibitor,CID_381,Histamine H2 receptor
+CHEMBL4614858,CHEMBL4614859,Binding/Inhibitor,CID_382,Beta-2 adrenergic receptor
+CHEMBL4618444,CHEMBL4618445,Binding/Inhibitor,CID_383,D(1B) dopamine receptor
+CHEMBL4622029,CHEMBL4622030,Binding/Inhibitor,CID_384,Endothelin-1 receptor
+CHEMBL4625771,CHEMBL4625772,Binding/Inhibitor,CID_385,EGFR Kinase
+CHEMBL4629379,CHEMBL4629380,Binding/Inhibitor,CID_386,Histamine H2 receptor
+CHEMBL4667909,CHEMBL4667910,Binding/Inhibitor,CID_387,Beta-2 adrenergic receptor
+CHEMBL4671364,CHEMBL4671365,Binding/Inhibitor,CID_388,D(1B) dopamine receptor
+CHEMBL4675060,CHEMBL4675061,Binding/Inhibitor,CID_389,Endothelin-1 receptor
+CHEMBL4678599,CHEMBL4678600,Binding/Inhibitor,CID_390,EGFR Kinase
+CHEMBL4682385,CHEMBL4682386,Binding/Inhibitor,CID_391,Histamine H2 receptor
+CHEMBL4685725,CHEMBL4685726,Binding/Inhibitor,CID_392,Beta-2 adrenergic receptor
+CHEMBL4689156,CHEMBL4689157,Binding/Inhibitor,CID_393,D(1B) dopamine receptor
+CHEMBL4702484,CHEMBL4702485,Binding/Inhibitor,CID_395,Endothelin-1 receptor
+CHEMBL4705918,CHEMBL4705919,Binding/Inhibitor,CID_397,EGFR Kinase
+CHEMBL4709644,CHEMBL4709645,Binding/Inhibitor,CID_398,Histamine H2 receptor
+CHEMBL4712959,CHEMBL4712960,Binding/Inhibitor,CID_399,Beta-2 adrenergic receptor
+CHEMBL4716570,CHEMBL4716571,Binding/Inhibitor,CID_400,D(1B) dopamine receptor
+CHEMBL4719958,CHEMBL4719959,Binding/Inhibitor,CID_401,Endothelin-1 receptor
+CHEMBL4723293,CHEMBL4723294,Binding/Inhibitor,CID_402,EGFR Kinase
+CHEMBL4727067,CHEMBL4727068,Binding/Inhibitor,CID_403,Histamine H2 receptor
+CHEMBL4730562,CHEMBL4730563,Binding/Inhibitor,CID_404,Beta-2 adrenergic receptor
+CHEMBL4734189,CHEMBL4734190,Binding/Inhibitor,CID_405,D(1B) dopamine receptor
+CHEMBL4737502,CHEMBL4737503,Binding/Inhibitor,CID_406,Endothelin-1 receptor
+CHEMBL4766483,CHEMBL4766484,Binding/Inhibitor,CID_407,EGFR Kinase
+CHEMBL4769695,CHEMBL4769696,Binding/Inhibitor,CID_408,Histamine H2 receptor
+CHEMBL4773026,CHEMBL4773027,Binding/Inhibitor,CID_409,Beta-2 adrenergic receptor
+CHEMBL4804780,CHEMBL4804781,Binding/Inhibitor,CID_410,D(1B) dopamine receptor
+CHEMBL4808728,CHEMBL4808729,Binding/Inhibitor,CID_411,Endothelin-1 receptor
+CHEMBL4812277,CHEMBL4812278,Binding/Inhibitor,CID_412,EGFR Kinase
+CHEMBL4815941,CHEMBL4815942,Binding/Inhibitor,CID_413,Histamine H2 receptor
+CHEMBL4819692,CHEMBL4819693,Binding/Inhibitor,CID_414,Beta-2 adrenergic receptor
+CHEMBL4823194,CHEMBL4823195,Binding/Inhibitor,CID_415,D(1B) dopamine receptor
+CHEMBL4826853,CHEMBL4826854,Binding/Inhibitor,CID_416,Endothelin-1 receptor
+CHEMBL4830372,CHEMBL4830373,Binding/Inhibitor,CID_417,EGFR Kinase
+CHEMBL4833845,CHEMBL4833846,Binding/Inhibitor,CID_418,Histamine H2 receptor
+CHEMBL4837576,CHEMBL4837577,Binding/Inhibitor,CID_419,Beta-2 adrenergic receptor
+CHEMBL4841121,CHEMBL4841122,Binding/Inhibitor,CID_420,D(1B) dopamine receptor
+CHEMBL4844755,CHEMBL4844756,Binding/Inhibitor,CID_421,Endothelin-1 receptor
+CHEMBL4883010,CHEMBL4883011,Binding/Inhibitor,CID_422,EGFR Kinase
+CHEMBL4887748,CHEMBL4887749,Binding/Inhibitor,CID_423,Histamine H2 receptor
+CHEMBL5032175,CHEMBL5032176,Binding/Inhibitor,CID_424,Beta-2 adrenergic receptor
+CHEMBL5035836,CHEMBL5035837,Binding/Inhibitor,CID_425,D(1B) dopamine receptor
+CHEMBL5039486,CHEMBL5039487,Binding/Inhibitor,CID_426,Endothelin-1 receptor
+CHEMBL5043027,CHEMBL5043028,Binding/Inhibitor,CID_427,EGFR Kinase
+CHEMBL5046586,CHEMBL5046587,Binding/Inhibitor,CID_428,Histamine H2 receptor
+CHEMBL5050050,CHEMBL5050051,Binding/Inhibitor,CID_429,Beta-2 adrenergic receptor
+CHEMBL5054836,CHEMBL5054837,Binding/Inhibitor,CID_430,D(1B) dopamine receptor
+CHEMBL5058387,CHEMBL5058388,Binding/Inhibitor,CID_431,Endothelin-1 receptor
+CHEMBL5098651,CHEMBL5098652,Binding/Inhibitor,CID_432,EGFR Kinase
+CHEMBL5105934,CHEMBL5105935,Binding/Inhibitor,CID_433,Histamine H2 receptor
+CHEMBL5109509,CHEMBL5109510,Binding/Inhibitor,CID_434,Beta-2 adrenergic receptor
+CHEMBL5112972,CHEMBL5112973,Binding/Inhibitor,CID_435,D(1B) dopamine receptor
+CHEMBL5116824,CHEMBL5116825,Binding/Inhibitor,CID_436,Endothelin-1 receptor
+CHEMBL5120280,CHEMBL5120281,Binding/Inhibitor,CID_437,EGFR Kinase
+CHEMBL5123899,CHEMBL5123900,Binding/Inhibitor,CID_438,Histamine H2 receptor
+CHEMBL5127538,CHEMBL5127539,Binding/Inhibitor,CID_439,Beta-2 adrenergic receptor
+CHEMBL5131041,CHEMBL5131042,Binding/Inhibitor,CID_440,D(1B) dopamine receptor
+CHEMBL5134826,CHEMBL5134827,Binding/Inhibitor,CID_441,Endothelin-1 receptor
+CHEMBL5138507,CHEMBL5138508,Binding/Inhibitor,CID_442,EGFR Kinase
+CHEMBL5141968,CHEMBL5141969,Binding/Inhibitor,CID_443,Histamine H2 receptor
+CHEMBL5145645,CHEMBL5145646,Binding/Inhibitor,CID_444,Beta-2 adrenergic receptor
+CHEMBL5149119,CHEMBL5149120,Binding/Inhibitor,CID_445,D(1B) dopamine receptor
+CHEMBL5152881,CHEMBL5152882,Binding/Inhibitor,CID_446,Endothelin-1 receptor
+CHEMBL5156650,CHEMBL5156651,Binding/Inhibitor,CID_447,EGFR Kinase
+CHEMBL5160089,CHEMBL5160090,Binding/Inhibitor,CID_448,Histamine H2 receptor
+CHEMBL5163497,CHEMBL5163498,Binding/Inhibitor,CID_449,Beta-2 adrenergic receptor
+CHEMBL5166838,CHEMBL5166839,Binding/Inhibitor,CID_450,D(1B) dopamine receptor
+CHEMBL5213207,CHEMBL5213208,Binding/Inhibitor,CID_452,Endothelin-1 receptor
+CHEMBL5217078,CHEMBL5217079,Binding/Inhibitor,CID_453,EGFR Kinase
+CHEMBL5225531,CHEMBL5225532,Binding/Inhibitor,CID_454,Histamine H2 receptor
+CHEMBL5229416,CHEMBL5229417,Binding/Inhibitor,CID_455,Beta-2 adrenergic receptor
+CHEMBL5233093,CHEMBL5233094,Binding/Inhibitor,CID_456,D(1B) dopamine receptor
+CHEMBL5237127,CHEMBL5237128,Binding/Inhibitor,CID_457,Endothelin-1 receptor
+CHEMBL5240681,CHEMBL5240682,Binding/Inhibitor,CID_458,EGFR Kinase
+CHEMBL5244662,CHEMBL5244663,Binding/Inhibitor,CID_460,Histamine H2 receptor
+CHEMBL5248563,CHEMBL5248564,Binding/Inhibitor,CID_461,Beta-2 adrenergic receptor
+CHEMBL5251939,CHEMBL5251940,Binding/Inhibitor,CID_462,D(1B) dopamine receptor
+CHEMBL5255764,CHEMBL5255765,Binding/Inhibitor,CID_463,Endothelin-1 receptor
+CHEMBL5259487,CHEMBL5259488,Binding/Inhibitor,CID_464,EGFR Kinase
+CHEMBL5263463,CHEMBL5263464,Binding/Inhibitor,CID_465,Histamine H2 receptor
+CHEMBL5316446,CHEMBL5316447,Binding/Inhibitor,CID_466,Beta-2 adrenergic receptor
+CHEMBL5319804,CHEMBL5319805,Binding/Inhibitor,CID_467,D(1B) dopamine receptor
+CHEMBL5323219,CHEMBL5323220,Binding/Inhibitor,CID_468,Endothelin-1 receptor
+CHEMBL5326700,CHEMBL5326701,Binding/Inhibitor,CID_469,EGFR Kinase
+CHEMBL5330182,CHEMBL5330183,Binding/Inhibitor,CID_470,Histamine H2 receptor
+CHEMBL5333813,CHEMBL5333814,Binding/Inhibitor,CID_471,Beta-2 adrenergic receptor
+CHEMBL5337253,CHEMBL5337254,Binding/Inhibitor,CID_472,D(1B) dopamine receptor
+CHEMBL5340820,CHEMBL5340821,Binding/Inhibitor,CID_473,Endothelin-1 receptor
+CHEMBL5344180,CHEMBL5344181,Binding/Inhibitor,CID_474,EGFR Kinase
+CHEMBL5347831,CHEMBL5347832,Binding/Inhibitor,CID_475,Histamine H2 receptor
+CHEMBL5351236,CHEMBL5351237,Binding/Inhibitor,CID_476,Beta-2 adrenergic receptor
+CHEMBL5354750,CHEMBL5354751,Binding/Inhibitor,CID_477,D(1B) dopamine receptor
+CHEMBL5358371,CHEMBL5358372,Binding/Inhibitor,CID_478,Endothelin-1 receptor
+CHEMBL5362004,CHEMBL5362005,Binding/Inhibitor,CID_479,EGFR Kinase
+CHEMBL5365362,CHEMBL5365363,Binding/Inhibitor,CID_481,Histamine H2 receptor
+CHEMBL5368989,CHEMBL5368990,Binding/Inhibitor,CID_482,Beta-2 adrenergic receptor
+CHEMBL5372547,CHEMBL5372548,Binding/Inhibitor,CID_483,D(1B) dopamine receptor
+CHEMBL5375898,CHEMBL5375899,Binding/Inhibitor,CID_484,Endothelin-1 receptor
+CHEMBL5379606,CHEMBL5379607,Binding/Inhibitor,CID_485,EGFR Kinase
+CHEMBL5383106,CHEMBL5383107,Binding/Inhibitor,CID_486,Histamine H2 receptor
+CHEMBL5386669,CHEMBL5386670,Binding/Inhibitor,CID_487,Beta-2 adrenergic receptor
+CHEMBL5390100,CHEMBL5390101,Binding/Inhibitor,CID_488,D(1B) dopamine receptor
+CHEMBL5393596,CHEMBL5393597,Binding/Inhibitor,CID_489,Endothelin-1 receptor
+CHEMBL5464587,CHEMBL5464588,Binding/Inhibitor,CID_490,EGFR Kinase
+CHEMBL5469123,CHEMBL5469124,Binding/Inhibitor,CID_491,Histamine H2 receptor
+CHEMBL5472973,CHEMBL5472974,Binding/Inhibitor,CID_492,Beta-2 adrenergic receptor
+CHEMBL5476872,CHEMBL5476873,Binding/Inhibitor,CID_493,D(1B) dopamine receptor
+CHEMBL5480889,CHEMBL5480890,Binding/Inhibitor,CID_494,Endothelin-1 receptor
+CHEMBL5502058,CHEMBL5502059,Binding/Inhibitor,CID_495,EGFR Kinase
+CHEMBL5505374,CHEMBL5505375,Binding/Inhibitor,CID_496,Histamine H2 receptor
+CHEMBL5509110,CHEMBL5509111,Binding/Inhibitor,CID_497,Beta-2 adrenergic receptor
+CHEMBL5512885,CHEMBL5512886,Binding/Inhibitor,CID_499,D(1B) dopamine receptor
+CHEMBL5516463,CHEMBL5516464,Binding/Inhibitor,CID_500,Endothelin-1 receptor
+CHEMBL5520458,CHEMBL5520459,Binding/Inhibitor,CID_501,EGFR Kinase
+CHEMBL5524343,CHEMBL5524344,Binding/Inhibitor,CID_502,Histamine H2 receptor
+CHEMBL5527790,CHEMBL5527791,Binding/Inhibitor,CID_503,Beta-2 adrenergic receptor
+CHEMBL5531436,CHEMBL5531437,Binding/Inhibitor,CID_504,D(1B) dopamine receptor
+CHEMBL5535748,CHEMBL5535749,Binding/Inhibitor,CID_505,Endothelin-1 receptor
+CHEMBL5539292,CHEMBL5539293,Binding/Inhibitor,CID_507,EGFR Kinase
+CHEMBL5543935,CHEMBL5543936,Binding/Inhibitor,CID_508,Histamine H2 receptor
+CHEMBL5547169,CHEMBL5547170,Binding/Inhibitor,CID_510,Beta-2 adrenergic receptor
+CHEMBL5551007,CHEMBL5551008,Binding/Inhibitor,CID_511,D(1B) dopamine receptor
+CHEMBL5554486,CHEMBL5554487,Binding/Inhibitor,CID_512,Endothelin-1 receptor
+CHEMBL5579132,CHEMBL5579133,Binding/Inhibitor,CID_513,EGFR Kinase
+CHEMBL5582845,CHEMBL5582846,Binding/Inhibitor,CID_514,Histamine H2 receptor
+CHEMBL5587175,CHEMBL5587176,Binding/Inhibitor,CID_515,Beta-2 adrenergic receptor
+CHEMBL5609135,CHEMBL5609136,Binding/Inhibitor,CID_516,D(1B) dopamine receptor
+CHEMBL5615124,CHEMBL5615125,Binding/Inhibitor,CID_517,Endothelin-1 receptor
+CHEMBL5620856,CHEMBL5620857,Binding/Inhibitor,CID_518,EGFR Kinase
+CHEMBL5624309,CHEMBL5624310,Binding/Inhibitor,CID_519,Histamine H2 receptor
+CHEMBL5628560,CHEMBL5628561,Binding/Inhibitor,CID_520,Beta-2 adrenergic receptor
+CHEMBL5636385,CHEMBL5636386,Binding/Inhibitor,CID_521,D(1B) dopamine receptor
+CHEMBL5648390,CHEMBL5648391,Binding/Inhibitor,CID_522,Endothelin-1 receptor
+CHEMBL5652231,CHEMBL5652232,Binding/Inhibitor,CID_523,EGFR Kinase
+CHEMBL5656028,CHEMBL5656029,Binding/Inhibitor,CID_524,Histamine H2 receptor
+CHEMBL5659673,CHEMBL5659674,Binding/Inhibitor,CID_525,Beta-2 adrenergic receptor
+CHEMBL5663574,CHEMBL5663575,Binding/Inhibitor,CID_526,D(1B) dopamine receptor
+CHEMBL5676607,CHEMBL5676608,Binding/Inhibitor,CID_527,Endothelin-1 receptor
+CHEMBL5679799,CHEMBL5679800,Binding/Inhibitor,CID_528,EGFR Kinase
+CHEMBL5683215,CHEMBL5683216,Binding/Inhibitor,CID_529,Histamine H2 receptor
+CHEMBL5696478,CHEMBL5696479,Binding/Inhibitor,CID_531,Beta-2 adrenergic receptor
+CHEMBL5699933,CHEMBL5699934,Binding/Inhibitor,CID_532,D(1B) dopamine receptor
+CHEMBL5703652,CHEMBL5703653,Binding/Inhibitor,CID_533,Endothelin-1 receptor
+CHEMBL5707338,CHEMBL5707339,Binding/Inhibitor,CID_534,EGFR Kinase
+CHEMBL5710723,CHEMBL5710724,Binding/Inhibitor,CID_535,Histamine H2 receptor
+CHEMBL5714405,CHEMBL5714406,Binding/Inhibitor,CID_536,Beta-2 adrenergic receptor
+CHEMBL5718036,CHEMBL5718037,Binding/Inhibitor,CID_537,D(1B) dopamine receptor
+CHEMBL5721159,CHEMBL5721160,Binding/Inhibitor,CID_538,Endothelin-1 receptor
+CHEMBL5729825,CHEMBL5729826,Binding/Inhibitor,CID_539,EGFR Kinase
+CHEMBL5730685,CHEMBL5730686,Binding/Inhibitor,CID_540,Histamine H2 receptor
+CHEMBL5731345,CHEMBL5731346,Binding/Inhibitor,CID_541,Beta-2 adrenergic receptor
+CHEMBL5732034,CHEMBL5732035,Binding/Inhibitor,CID_542,D(1B) dopamine receptor
+CHEMBL5732752,CHEMBL5732753,Binding/Inhibitor,CID_543,Endothelin-1 receptor
+CHEMBL5733450,CHEMBL5733451,Binding/Inhibitor,CID_544,EGFR Kinase
+CHEMBL5734098,CHEMBL5734099,Binding/Inhibitor,CID_545,Histamine H2 receptor
+CHEMBL5734767,CHEMBL5734768,Binding/Inhibitor,CID_546,Beta-2 adrenergic receptor
+CHEMBL5735427,CHEMBL5735428,Binding/Inhibitor,CID_547,D(1B) dopamine receptor
+CHEMBL5736134,CHEMBL5736135,Binding/Inhibitor,CID_548,Endothelin-1 receptor
+CHEMBL5736829,CHEMBL5736830,Binding/Inhibitor,CID_550,EGFR Kinase
+CHEMBL5737567,CHEMBL5737568,Binding/Inhibitor,CID_551,Histamine H2 receptor
+CHEMBL5738333,CHEMBL5738334,Binding/Inhibitor,CID_553,Beta-2 adrenergic receptor
+CHEMBL5739117,CHEMBL5739118,Binding/Inhibitor,CID_554,D(1B) dopamine receptor
+CHEMBL6072703,CHEMBL6072704,Binding/Inhibitor,CID_555,Endothelin-1 receptor
+CHEMBL6076517,CHEMBL6076518,Binding/Inhibitor,CID_556,EGFR Kinase
+CHEMBL6080729,CHEMBL6080730,Binding/Inhibitor,CID_557,Histamine H2 receptor
+CHEMBL6084623,CHEMBL6084624,Binding/Inhibitor,CID_558,Beta-2 adrenergic receptor
+CHEMBL6088390,CHEMBL6088391,Binding/Inhibitor,CID_559,D(1B) dopamine receptor
+CHEMBL6092323,CHEMBL6092324,Binding/Inhibitor,CID_560,Endothelin-1 receptor
+CHEMBL6095710,CHEMBL6095711,Binding/Inhibitor,CID_561,EGFR Kinase
+CHEMBL6099405,CHEMBL6099406,Binding/Inhibitor,CID_562,Histamine H2 receptor
+CHEMBL6104793,CHEMBL6104794,Binding/Inhibitor,CID_563,Beta-2 adrenergic receptor
+CHEMBL6108190,CHEMBL6108191,Binding/Inhibitor,CID_564,D(1B) dopamine receptor
+CHEMBL6111948,CHEMBL6111949,Binding/Inhibitor,CID_566,Endothelin-1 receptor
+CHEMBL6115516,CHEMBL6115517,Binding/Inhibitor,CID_567,EGFR Kinase
+CHEMBL6118884,CHEMBL6118885,Binding/Inhibitor,CID_568,Histamine H2 receptor
+CHEMBL6123151,CHEMBL6123152,Binding/Inhibitor,CID_569,Beta-2 adrenergic receptor
+CHEMBL6126514,CHEMBL6126515,Binding/Inhibitor,CID_570,D(1B) dopamine receptor
+CHEMBL6130278,CHEMBL6130279,Binding/Inhibitor,CID_571,Endothelin-1 receptor
+CHEMBL6135978,CHEMBL6135979,Binding/Inhibitor,CID_572,EGFR Kinase
+CHEMBL6139290,CHEMBL6139291,Binding/Inhibitor,CID_573,Histamine H2 receptor
+CHEMBL6154381,CHEMBL6154382,Binding/Inhibitor,CID_577,Beta-2 adrenergic receptor
+CHEMBL6157780,CHEMBL6157781,Binding/Inhibitor,CID_578,D(1B) dopamine receptor
+CHEMBL6179715,CHEMBL6179716,Binding/Inhibitor,CID_579,Endothelin-1 receptor
+CHEMBL6183185,CHEMBL6183186,Binding/Inhibitor,CID_580,EGFR Kinase
+CHEMBL6186485,CHEMBL6186486,Binding/Inhibitor,CID_581,Histamine H2 receptor
+CHEMBL1158643,CHEMBL1139451,Binding/Inhibitor,CID_582,Beta-2 adrenergic receptor
+CHEMBL1130621,CHEMBL1130622,Binding/Inhibitor,CID_583,D(1B) dopamine receptor
+CHEMBL1134100,CHEMBL1134435,Binding/Inhibitor,CID_584,Endothelin-1 receptor
+CHEMBL1136082,CHEMBL1136083,Binding/Inhibitor,CID_585,EGFR Kinase
+CHEMBL1137973,CHEMBL1137847,Binding/Inhibitor,CID_586,Histamine H2 receptor
+CHEMBL1122399,CHEMBL1122400,Binding/Inhibitor,CID_587,Beta-2 adrenergic receptor
+CHEMBL1123207,CHEMBL1123208,Binding/Inhibitor,CID_588,D(1B) dopamine receptor
+CHEMBL1123951,CHEMBL1123952,Binding/Inhibitor,CID_589,Endothelin-1 receptor
+CHEMBL1124950,CHEMBL1124951,Binding/Inhibitor,CID_590,EGFR Kinase
+CHEMBL1125278,CHEMBL1125929,Binding/Inhibitor,CID_591,Histamine H2 receptor
+CHEMBL1126681,CHEMBL1126682,Binding/Inhibitor,CID_592,Beta-2 adrenergic receptor
+CHEMBL1127480,CHEMBL1127481,Binding/Inhibitor,CID_593,D(1B) dopamine receptor
+CHEMBL1128221,CHEMBL1128222,Binding/Inhibitor,CID_594,Endothelin-1 receptor
+CHEMBL1129584,CHEMBL1129569,Binding/Inhibitor,CID_595,EGFR Kinase
+CHEMBL1131067,CHEMBL1131068,Binding/Inhibitor,CID_596,Histamine H2 receptor
+CHEMBL1132458,CHEMBL1132155,Binding/Inhibitor,CID_597,Beta-2 adrenergic receptor
+CHEMBL1132977,CHEMBL1132978,Binding/Inhibitor,CID_598,D(1B) dopamine receptor
+CHEMBL1135500,CHEMBL1135501,Binding/Inhibitor,CID_599,Endothelin-1 receptor
+CHEMBL1145076,CHEMBL1145077,Binding/Inhibitor,CID_600,EGFR Kinase
+CHEMBL1137133,CHEMBL1137134,Binding/Inhibitor,CID_601,Histamine H2 receptor
+CHEMBL1137223,CHEMBL1138794,Binding/Inhibitor,CID_602,Beta-2 adrenergic receptor
+CHEMBL1141124,CHEMBL1141125,Binding/Inhibitor,CID_603,D(1B) dopamine receptor
+CHEMBL1148523,CHEMBL1148524,Binding/Inhibitor,CID_604,Endothelin-1 receptor
+CHEMBL1146171,CHEMBL1146172,Binding/Inhibitor,CID_605,EGFR Kinase
+CHEMBL1143051,CHEMBL1143052,Binding/Inhibitor,CID_606,Histamine H2 receptor
+CHEMBL1148818,CHEMBL1148819,Binding/Inhibitor,CID_607,Beta-2 adrenergic receptor
+CHEMBL1139788,CHEMBL1139789,Binding/Inhibitor,CID_608,D(1B) dopamine receptor
+CHEMBL1143108,CHEMBL1143109,Binding/Inhibitor,CID_609,Endothelin-1 receptor
+CHEMBL1151167,CHEMBL1151168,Binding/Inhibitor,CID_610,EGFR Kinase
+CHEMBL1148897,CHEMBL1148898,Binding/Inhibitor,CID_611,Histamine H2 receptor
+CHEMBL1150300,CHEMBL1150301,Binding/Inhibitor,CID_612,Beta-2 adrenergic receptor
+CHEMBL1158126,CHEMBL1158127,Binding/Inhibitor,CID_613,D(1B) dopamine receptor
+CHEMBL1155904,CHEMBL1155905,Binding/Inhibitor,CID_614,Endothelin-1 receptor
+CHEMBL1139298,CHEMBL1139299,Binding/Inhibitor,CID_615,EGFR Kinase
+CHEMBL1152705,CHEMBL1152706,Binding/Inhibitor,CID_616,Histamine H2 receptor
+CHEMBL1137636,CHEMBL1137637,Binding/Inhibitor,CID_617,Beta-2 adrenergic receptor
+CHEMBL1152423,CHEMBL1152424,Binding/Inhibitor,CID_618,D(1B) dopamine receptor
+CHEMBL1155200,CHEMBL1155201,Binding/Inhibitor,CID_619,Endothelin-1 receptor
+CHEMBL1157552,CHEMBL1157553,Binding/Inhibitor,CID_620,EGFR Kinase
+CHEMBL1156307,CHEMBL1156308,Binding/Inhibitor,CID_621,Histamine H2 receptor
+CHEMBL1177768,CHEMBL1177769,Binding/Inhibitor,CID_622,Beta-2 adrenergic receptor
+CHEMBL1240315,CHEMBL1240316,Binding/Inhibitor,CID_623,D(1B) dopamine receptor
+CHEMBL1268868,CHEMBL1268869,Binding/Inhibitor,CID_624,Endothelin-1 receptor
+CHEMBL1629539,CHEMBL1629540,Binding/Inhibitor,CID_625,EGFR Kinase
+CHEMBL1649253,CHEMBL1649254,Binding/Inhibitor,CID_626,Histamine H2 receptor
+CHEMBL1687752,CHEMBL1687753,Binding/Inhibitor,CID_627,Beta-2 adrenergic receptor
+CHEMBL1777667,CHEMBL1777731,Binding/Inhibitor,CID_628,D(1B) dopamine receptor
+CHEMBL1817651,CHEMBL1817652,Binding/Inhibitor,CID_629,Endothelin-1 receptor
+CHEMBL1914385,CHEMBL1914361,Binding/Inhibitor,CID_630,EGFR Kinase
+CHEMBL1949610,CHEMBL1949600,Binding/Inhibitor,CID_631,Histamine H2 receptor
+CHEMBL2029326,CHEMBL2029303,Binding/Inhibitor,CID_632,Beta-2 adrenergic receptor
+CHEMBL2069239,CHEMBL2069258,Binding/Inhibitor,CID_633,D(1B) dopamine receptor
+CHEMBL2074132,CHEMBL2074308,Binding/Inhibitor,CID_634,Endothelin-1 receptor
+CHEMBL2150977,CHEMBL2150889,Binding/Inhibitor,CID_635,EGFR Kinase
+CHEMBL2177070,CHEMBL2176871,Binding/Inhibitor,CID_636,Histamine H2 receptor
+CHEMBL3045526,CHEMBL3045504,Binding/Inhibitor,CID_637,Beta-2 adrenergic receptor
+CHEMBL3046949,CHEMBL3046107,Binding/Inhibitor,CID_640,D(1B) dopamine receptor
+CHEMBL2331307,CHEMBL2331470,Binding/Inhibitor,CID_641,Endothelin-1 receptor
+CHEMBL2390866,CHEMBL2390845,Binding/Inhibitor,CID_642,EGFR Kinase
+CHEMBL2417546,CHEMBL2417396,Binding/Inhibitor,CID_643,Histamine H2 receptor
+CHEMBL3091445,CHEMBL3091460,Binding/Inhibitor,CID_647,Beta-2 adrenergic receptor
+CHEMBL3120116,CHEMBL3120144,Binding/Inhibitor,CID_648,D(1B) dopamine receptor
+CHEMBL3244304,CHEMBL3244195,Binding/Inhibitor,CID_649,Endothelin-1 receptor
+CHEMBL3272011,CHEMBL3272128,Binding/Inhibitor,CID_650,EGFR Kinase
+CHEMBL3352552,CHEMBL3352529,Binding/Inhibitor,CID_652,Histamine H2 receptor
+CHEMBL3351529,CHEMBL3352384,Binding/Inhibitor,CID_654,Beta-2 adrenergic receptor
+CHEMBL3400076,CHEMBL3400012,Binding/Inhibitor,CID_655,D(1B) dopamine receptor
+CHEMBL3525975,CHEMBL3525933,Binding/Inhibitor,CID_656,Endothelin-1 receptor
+CHEMBL3596088,CHEMBL3596128,Binding/Inhibitor,CID_657,EGFR Kinase
+CHEMBL3627715,CHEMBL3627684,Binding/Inhibitor,CID_658,Histamine H2 receptor
+CHEMBL3751692,CHEMBL3751678,Binding/Inhibitor,CID_660,Beta-2 adrenergic receptor
+CHEMBL3785030,CHEMBL3785016,Binding/Inhibitor,CID_662,D(1B) dopamine receptor
+CHEMBL3822357,CHEMBL3822454,Binding/Inhibitor,CID_663,Endothelin-1 receptor
+CHEMBL3868587,CHEMBL3868588,Binding/Inhibitor,CID_667,EGFR Kinase
+CHEMBL3994658,CHEMBL3994659,Binding/Inhibitor,CID_668,Histamine H2 receptor
+CHEMBL4017464,CHEMBL4017465,Binding/Inhibitor,CID_669,Beta-2 adrenergic receptor
+CHEMBL4041465,CHEMBL4041466,Binding/Inhibitor,CID_670,D(1B) dopamine receptor
+CHEMBL4118122,CHEMBL4118123,Binding/Inhibitor,CID_671,Endothelin-1 receptor
+CHEMBL4145445,CHEMBL4145446,Binding/Inhibitor,CID_672,EGFR Kinase
+CHEMBL4184096,CHEMBL4184097,Binding/Inhibitor,CID_673,Histamine H2 receptor
+CHEMBL4219077,CHEMBL4219078,Binding/Inhibitor,CID_674,Beta-2 adrenergic receptor
+CHEMBL4257533,CHEMBL4257534,Binding/Inhibitor,CID_675,D(1B) dopamine receptor
+CHEMBL4304836,CHEMBL4304837,Binding/Inhibitor,CID_677,Endothelin-1 receptor
+CHEMBL4334514,CHEMBL4334515,Binding/Inhibitor,CID_679,EGFR Kinase
+CHEMBL4359916,CHEMBL4359917,Binding/Inhibitor,CID_680,Histamine H2 receptor
+CHEMBL4387702,CHEMBL4387703,Binding/Inhibitor,CID_681,Beta-2 adrenergic receptor
+CHEMBL4406878,CHEMBL4406879,Binding/Inhibitor,CID_682,D(1B) dopamine receptor
+CHEMBL4433251,CHEMBL4433252,Binding/Inhibitor,CID_683,Endothelin-1 receptor
+CHEMBL4613313,CHEMBL4613314,Binding/Inhibitor,CID_684,EGFR Kinase
+CHEMBL4665733,CHEMBL4665734,Binding/Inhibitor,CID_685,Histamine H2 receptor
+CHEMBL4680372,CHEMBL4680373,Binding/Inhibitor,CID_686,Beta-2 adrenergic receptor
+CHEMBL4715824,CHEMBL4715825,Binding/Inhibitor,CID_687,D(1B) dopamine receptor
+CHEMBL4765306,CHEMBL4765307,Binding/Inhibitor,CID_688,Endothelin-1 receptor
+CHEMBL4819089,CHEMBL4819090,Binding/Inhibitor,CID_689,EGFR Kinase
+CHEMBL4840355,CHEMBL4840356,Binding/Inhibitor,CID_690,Histamine H2 receptor
+CHEMBL5046265,CHEMBL5046266,Binding/Inhibitor,CID_691,Beta-2 adrenergic receptor
+CHEMBL5113419,CHEMBL5113420,Binding/Inhibitor,CID_692,D(1B) dopamine receptor
+CHEMBL5131523,CHEMBL5131524,Binding/Inhibitor,CID_693,Endothelin-1 receptor
+CHEMBL5154733,CHEMBL5154734,Binding/Inhibitor,CID_694,EGFR Kinase
+CHEMBL5230172,CHEMBL5230173,Binding/Inhibitor,CID_695,Histamine H2 receptor
+CHEMBL5257073,CHEMBL5257074,Binding/Inhibitor,CID_696,Beta-2 adrenergic receptor
+CHEMBL5331126,CHEMBL5331127,Binding/Inhibitor,CID_697,D(1B) dopamine receptor
+CHEMBL5357022,CHEMBL5357023,Binding/Inhibitor,CID_698,Endothelin-1 receptor
+CHEMBL5380854,CHEMBL5380855,Binding/Inhibitor,CID_699,EGFR Kinase
+CHEMBL5518174,CHEMBL5518175,Binding/Inhibitor,CID_700,Histamine H2 receptor
+CHEMBL5550126,CHEMBL5550127,Binding/Inhibitor,CID_701,Beta-2 adrenergic receptor
+CHEMBL5614443,CHEMBL5614444,Binding/Inhibitor,CID_702,D(1B) dopamine receptor
+CHEMBL5712903,CHEMBL5712904,Binding/Inhibitor,CID_703,Endothelin-1 receptor
+CHEMBL6071168,CHEMBL6071169,Binding/Inhibitor,CID_704,EGFR Kinase
+CHEMBL6096708,CHEMBL6096709,Binding/Inhibitor,CID_705,Histamine H2 receptor
+CHEMBL6127103,CHEMBL6127104,Binding/Inhibitor,CID_706,Beta-2 adrenergic receptor
+CHEMBL23943,CHEMBL23668,Binding/Inhibitor,CID_707,D(1B) dopamine receptor
+CHEMBL44057,CHEMBL44779,Binding/Inhibitor,CID_708,Endothelin-1 receptor
+CHEMBL1229920,CHEMBL1229937,Binding/Inhibitor,CID_709,EGFR Kinase
+CHEMBL1369018,CHEMBL1369019,Binding/Inhibitor,CID_710,Histamine H2 receptor
+CHEMBL1610837,CHEMBL1610838,Binding/Inhibitor,CID_711,Beta-2 adrenergic receptor
+CHEMBL2079410,CHEMBL2079411,Binding/Inhibitor,CID_712,D(1B) dopamine receptor
+CHEMBL2105402,CHEMBL2105403,Binding/Inhibitor,CID_713,Endothelin-1 receptor
+CHEMBL3986629,CHEMBL3986630,Binding/Inhibitor,CID_714,EGFR Kinase
+CHEMBL4645470,CHEMBL4645471,Binding/Inhibitor,CID_715,Histamine H2 receptor
+CHEMBL5313671,CHEMBL5313672,Binding/Inhibitor,CID_716,Beta-2 adrenergic receptor
+CHEMBL267014,CHEMBL10188,Binding/Inhibitor,CID_717,D(1B) dopamine receptor
+CHEMBL2074,CHEMBL1971,Binding/Inhibitor,CID_718,Endothelin-1 receptor
