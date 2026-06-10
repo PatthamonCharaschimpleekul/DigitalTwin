@@ -1,5 +1,7 @@
 import pandas as pd
 import os
+import urllib.request
+import gzip
 
 print("==================================================")
 print("🧬 เริ่มต้นระบบ Unified Heterogeneous Graph Pipeline (Strict Mode)")
@@ -12,7 +14,8 @@ df_ddi = pd.read_csv("ddi_edges_sample.csv")
 print("✅ โหลดไฟล์ข้อมูลพื้นฐาน (PubChem, PubMed, DDI) สำเร็จ!")
 
 # 2. ระบุชื่อไฟล์ CTD จริงในเครื่องของคุณ
-file1 = "CTD_chem_gene_ixns.csv"
+file1 = "https://github.com/PatthamonCharaschimpleekul/DigitalTwin/releases/download/v1.0/CTD_chem_gene_ixns.csv
+"
 file2 = "CTD_genes_diseases.csv" 
 
 print(f"⏳ กำลังประมวลผลบิ๊กดาต้าชีววิทยาจาก {file1} และ {file2}...")
