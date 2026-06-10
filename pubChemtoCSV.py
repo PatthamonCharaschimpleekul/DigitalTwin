@@ -5,7 +5,8 @@ from rdkit import Chem
 from rdkit.Chem import rdMolDescriptors
 from rdkit.Chem import Draw  # โมดูลสำหรับวาดรูปพันธะเคมี
 
-gzip_file_path = "Compound_000000001_000500000(1).sdf.gz"
+gzip_file_path = "https://github.com/PatthamonCharaschimpleekul/DigitalTwin/releases/download/v1.0/Compound_000000001_000500000.1.sdf.gz
+"
 image_folder = "drug_images"  # โฟลเดอร์สำหรับเก็บรูปโครงสร้างเคมี
 os.makedirs(image_folder, exist_ok=True)
 
