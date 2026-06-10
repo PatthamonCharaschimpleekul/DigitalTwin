@@ -3,16 +3,17 @@ import pandas as pd
 import os
 
 # ระบุชื่อไฟล์ TWOSIDES ที่อยู่ในโฟลเดอร์
-twosides_file = "TWOSIDES.csv.gz"
+twosides_file = "https://github.com/PatthamonCharaschimpleekul/DigitalTwin/releases/download/v1.0/TWOSIDES.csv.gz
+"
 
-print("==========================================")
+'''print("==========================================")
 if os.path.exists(twosides_file):
     print(f"📦 ตรวจพบไฟล์ DDI ในเครื่อง: {twosides_file}")
     print(f"📊 ขนาดไฟล์ซิป: {os.path.getsize(twosides_file) / (1024*1024):.2f} MB")
     print("==========================================")
 else:
     print(f"❌ ไม่พบไฟล์ '{twosides_file}' กรุณาตรวจสอบชื่อไฟล์ในโฟลเดอร์ครับ")
-    exit()
+    exit()'''
 
 print("⏳ กำลังสกัดข้อมูลคู่ยาตีกัน (DDI) จาก TWOSIDES...")
 
