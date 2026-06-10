@@ -4,6 +4,7 @@ import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import rdMolDescriptors
 from rdkit.Chem import Draw  # โมดูลสำหรับวาดรูปพันธะเคมี
+import urllib.request
 
 gzip_file_path = "https://github.com/PatthamonCharaschimpleekul/DigitalTwin/releases/download/v1.0/Compound_000000001_000500000.1.sdf.gz
 "
