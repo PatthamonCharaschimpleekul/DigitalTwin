@@ -15,6 +15,7 @@ st.set_page_config(
 # ฝัง Custom CSS ควบคุมสไตล์และธีม Dark Medical Dashboard
 st.markdown("""
     <style>
+    /*
         .main { background-color: #0b0e14; }
         .metric-card {
             background-color: #151922;
@@ -24,7 +25,21 @@ st.markdown("""
             margin-bottom: 10px;
         }
         .stDataFrame { border: 1px solid #232936; border-radius: 6px; }
-        h1, h2, h3, h4 { color: #f0f2f5 !important; font-weight: 600 !important; }
+        h1, h2, h3, h4 { color: #f0f2f5 !important; font-weight: 600 !important; }*/
+        /* 1. บังคับพื้นหลังทุกจุดรวมถึงโครงสร้างระบบให้เป็นสีดำตามที่คุณเลือก */
+        .stApp, .stAppDeployButton, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+            background-color: #0b0e14 !important;
+    }
+            
+        /* 2. บังคับแถบเมนูด้านข้าง (Sidebar) ให้มืดด้วย */
+          [data-testid="stSidebar"] {
+            background-color: #0d1117 !important;
+        }
+
+        /* 3. บังคับตัวหนังสือและป้ายกำกับทั้งหมดให้เป็นสีขาว (ยกเว้นปุ่มแท็บ) */
+        h1, h2, h3, h4, p, span, label, li, div, .stMarkdown {
+            color: #f0f2f5 !important;
+        }
         .stTabs [data-baseweb="tab"] { color: #8a99ad; }
         .stTabs [data-baseweb="tab"]:hover { color: #3a86ff; }
         .stTabs [data-baseweb="tab"][aria-selected="true"] { color: #3a86ff; font-weight: bold; }
