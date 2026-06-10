@@ -1,6 +1,7 @@
-import gzip
 import pandas as pd
 import os
+import urllib.request
+import gzip
 
 # ระบุชื่อไฟล์ TWOSIDES ที่อยู่ในโฟลเดอร์
 twosides_file = "https://github.com/PatthamonCharaschimpleekul/DigitalTwin/releases/download/v1.0/TWOSIDES.csv.gz
