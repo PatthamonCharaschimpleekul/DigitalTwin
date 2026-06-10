@@ -3,22 +3,27 @@ import gzip
 import xml.etree.ElementTree as ET
 import pandas as pd
 
-# 1. ค้นหาไฟล์ตระกูล pubmed....xml.gz ในโฟลเดอร์อัตโนมัติ
-xml_file_path = None
-for file in os.listdir('.'):
-    if file.startswith('pubmed') and file.endswith('.xml.gz'):
-        xml_file_path = file
-        break
+# --- เริ่มต้นโค้ดใหม่ดึงข้อมูลจาก GitHub Release ---
+import urllib.request
 
-if xml_file_path:
-    print("==========================================")
-    print(f"📦 ตรวจพบไฟล์ PubMed ในเครื่อง: {xml_file_path}")
-    print(f"📊 ขนาดไฟล์ซิป: {os.path.getsize(xml_file_path) / (1024*1024):.2f} MB")
-    print("==========================================")
-else:
-    print("❌ ไม่พบไฟล์ที่ชื่อขึ้นต้นด้วย 'pubmed' และลงท้ายด้วย '.xml.gz' ในโฟลเดอร์นี้")
-    print("กรุณาตรวจสอบว่าย้ายไฟล์ที่ดาวน์โหลดมาไว้ในโฟลเดอร์ทำงานหรือยังครับ")
+# 1. เปลี่ยนตรงนี้เป็นลิงก์ URL ของไฟล์ .xml.gz ที่คุณอัปโหลดไว้ใน GitHub Release
+xml_online_url = "https://github.com/PatthamonCharaschimpleekul/DigitalTwin/releases/download/v1.0/pubmed26n0001.xml.gz
+"
+
+print("=========================================")
+print("🌐 กำลังเชื่อมต่อดึงบิ๊กดาต้า PubMed จาก Cloud Release...")
+print("=========================================")
+
+try:
+    # สร้างท่อเชื่อมต่อดาวน์โหลดไฟล์ตรงผ่านอินเทอร์เน็ต
+    response = urllib.request.urlopen(xml_online_url)
+    # ส่งท่อข้อมูลเข้าสู่ระบบปลดบล็อก gzip ต่อได้เลย
+    xml_file_path = gzip.GzipFile(fileobj=response)
+    print("✅ การเชื่อมต่อสำเร็จ! กำลังเริ่มแกะข้อมูลวิทยาศาสตร์การแพทย์...")
+except Exception as e:
+    print(f"❌ เกิดข้อผิดพลาดในการดึงข้อมูลจาก Cloud: {e}")
     exit()
+# --- สิ้นสุดโค้ดใหม่ ---
 
 # 2. ตั้งค่าเตรียมสกัดข้อมูล
 data_list = []
