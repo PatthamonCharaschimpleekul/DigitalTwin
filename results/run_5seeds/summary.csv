@@ -1,0 +1,14 @@
+,,auroc,auroc,auprc,auprc,within_drug_auroc,within_drug_auroc
+,,mean,std,mean,std,mean,std
+split,model,,,,,,
+cold_drug,global_rate,0.5007,0.0017,0.1772,0.0023,0.5,0.0
+cold_drug,graph,0.6037,0.0069,0.2461,0.0059,0.5,0.0
+cold_drug,graph_patient,0.6393,0.0135,0.2837,0.0087,0.5821,0.0058
+cold_drug,patient_only,0.5812,0.0069,0.2469,0.0066,0.5757,0.0058
+temporal,drug_frequency,0.7111,0.0002,0.3671,0.0003,0.5,0.0
+temporal,drug_id,0.7107,0.0005,0.3678,0.0007,0.5,0.0
+temporal,drug_id_patient,0.7315,0.0006,0.3971,0.0005,0.5877,0.0013
+temporal,global_rate,0.4992,0.0008,0.1807,0.0004,0.5,0.0
+temporal,graph,0.694,0.0002,0.3447,0.0003,0.4996,0.001
+temporal,graph_patient,0.7204,0.0008,0.3812,0.0008,0.5847,0.0016
+temporal,patient_only,0.592,0.0005,0.2578,0.0005,0.5677,0.0001

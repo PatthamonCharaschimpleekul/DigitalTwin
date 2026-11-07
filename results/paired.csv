@@ -1,0 +1,6 @@
+split,a,b,mean_diff,sd,ci95_low,ci95_high,seeds_a_wins,n
+temporal,drug_id_patient,drug_frequency,0.0206,0.0004,0.0203,0.0208,10,10
+temporal,drug_id_patient,graph_patient,0.0116,0.0006,0.0112,0.012,10,10
+temporal,graph_patient,graph,0.0261,0.0008,0.0255,0.0266,10,10
+cold_drug,graph_patient,patient_only,0.0598,0.0137,0.05,0.0696,10,10
+cold_drug,graph_patient,graph,0.0341,0.0142,0.0239,0.0443,10,10
