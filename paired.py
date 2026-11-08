@@ -5,7 +5,9 @@ from scipy import stats
 m = pd.read_csv("results/metrics.csv")
 pairs = [("temporal", "drug_id_patient", "drug_frequency"), ("temporal", "drug_id_patient", "graph_patient"),
          ("temporal", "graph_patient", "graph"), ("cold_drug", "graph_patient", "patient_only"),
-         ("cold_drug", "graph_patient", "graph")]
+         ("cold_drug", "graph_patient", "graph"), ("temporal", "drug_id_patient", "gradient_boosting"),
+         ("cold_drug", "graph_patient", "gradient_boosting"), ("cold_drug", "graph_patient", "logistic_regression"),
+         ("cold_drug", "graph_patient", "structure_knn")]
 rows = []
 for split, a, b in pairs:
     w = m[m.split == split].pivot(index="seed", columns="model", values="auroc")

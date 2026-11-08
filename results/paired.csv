@@ -4,3 +4,7 @@ temporal,drug_id_patient,graph_patient,0.0116,0.0006,0.0112,0.012,10,10
 temporal,graph_patient,graph,0.0261,0.0008,0.0255,0.0266,10,10
 cold_drug,graph_patient,patient_only,0.0598,0.0137,0.05,0.0696,10,10
 cold_drug,graph_patient,graph,0.0341,0.0142,0.0239,0.0443,10,10
+temporal,drug_id_patient,gradient_boosting,0.0005,0.0005,0.0001,0.0008,9,10
+cold_drug,graph_patient,gradient_boosting,0.0177,0.0091,0.0112,0.0242,10,10
+cold_drug,graph_patient,logistic_regression,0.0662,0.0114,0.0581,0.0743,10,10
+cold_drug,graph_patient,structure_knn,0.085,0.0162,0.0734,0.0965,10,10
