@@ -1,1 +1,1 @@
-{"seeds": 10, "epochs": 40, "models": "graph_random_patient,graph_no_atc_patient,atc_only_patient", "out": "metrics_ablation.csv"}
+{"seeds": 1, "epochs": 40, "models": "graph_patient", "out": "metrics_demo.csv", "splits": "temporal", "graph": "gene_organ.csv", "save_preds": true}

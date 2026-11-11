@@ -1,109 +1,111 @@
-# 🧬 Patient Digital Twin Inference Engine: Unified Heterogeneous Graph Machine Learning Pipeline
+# Patient-Conditioned Graph Learning for Organ-Level Adverse Drug Event Prediction
 
-[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![Three.js](https://img.shields.io/badge/Three.js-r128-000000?style=flat-square&logo=three.js&logoColor=white)](https://threejs.org/)
-[![Target Hardware](https://img.shields.io/badge/CPU_Target-AMD_Ryzen_9-ED1C24?style=flat-square&logo=amd&logoColor=white)](#hardware-optimization)
+Code, results and paper source for a study that predicts which of eight organ systems (liver, heart, nervous,
+kidney, lung, gastrointestinal, skin, blood) appear in an FDA Adverse Event Reporting System (FAERS) report, given
+the drug and basic patient attributes. A drug–gene–organ graph built from ChEMBL mechanisms and curated CTD
+gene–disease associations is compared against drug identity, chemical structure and patient attributes.
 
-An advanced, real-time clinical decision support system and visual intelligence dashboard. This system models intricate molecular, genetic, and pathological interactions into a single **Unified Heterogeneous Graph Machine Learning Pipeline**. By ingesting real-world biomedical big data, it maps systemic, multi-organ biological cascades, visualizing predictions on a highly accurate 3D Patient Digital Twin.
+Paper: [`paper/main.tex`](paper/main.tex) ([PDF](paper/main.pdf)).
 
-Designed as a cutting-edge submission for the **HIT Award 2026 (Health Innovation and Technology)**.
+## Main results
 
----
+Macro AUROC, mean over ten seeds (309,424 FAERS reports from 2025, 1,167 drugs).
 
-## 📌 Executive Abstract
+| Model | Temporal (seen drugs) | Cold drug (unseen drugs) | ATC class (unseen classes) |
+|---|---|---|---|
+| Patient features only | 0.592 | 0.583 | 0.577 |
+| Gradient boosting (patient + ATC + fingerprint) | 0.731 | 0.625 | **0.595** |
+| Drug identity + patient | **0.732** | – | – |
+| Graph + patient | 0.720 | **0.643** | 0.593 |
+| Graph + fingerprint + patient | 0.730 | 0.637 | 0.590 |
 
-Modern pharmacology and precision medicine suffer from isolated data silos, making the prediction of cross-drug interactions and genetic cascade side effects immensely challenging. This project breaks down these barriers by constructing a **Heterogeneous Knowledge Graph** that unifies chemical profiles (PubChem), literature contexts (PubMed), and systemic toxicity datasets (CTD). 
+- **Seen drugs:** report history is the strongest signal. The graph adds nothing.
+- **Unseen drugs:** the graph beats every comparator, including gradient boosting, by 0.018 AUROC (95% drug-level
+  bootstrap interval 0.011–0.024). The gain disappears when drug–target edges are shuffled. It survives removing CTD
+  associations that could encode drug knowledge.
+- **Unseen therapeutic classes:** the graph still beats patient features (+0.017, 0.004–0.029) but only matches
+  gradient boosting and an ATC-class-only model.
+- **Within-drug AUROC** (ranking patients on the same drug) stays at 0.56–0.59. This is a research prototype and
+  must not guide treatment.
 
-The core inference engine processes these interconnected entities to map molecular behaviors down to specific biological target receptors, tracing how cellular alterations cascade into organ-level dysfunctions (e.g., Liver, Heart, Brain, and Lungs). The platform brings these complex machine learning relations to life via an interactive, lightweight WebGL-powered 3D humanoid anatomy model built natively with **Three.js**, eliminating abstract rows of numbers and replacing them with intuitive, clinical spatial intelligence.
+Full tables are in [`results/`](results): per-seed metrics (`metrics*.csv`), seed-paired differences
+(`paired.csv`) and drug-level bootstrap intervals (`bootstrap.csv`).
 
----
+## Reproducing the results
 
-## 🛠️ System Architecture & Data Pipeline
+Requires Python 3.12 and an NVIDIA GPU (training asserts CUDA).
 
-The backend functions on a zero-simulation, real-data ingestion pipeline. It parses massive medical databases, transforms data structures into typed nodes and edges, and delivers optimized slices to the presentation layer.
-
-```text
-[ PubChem (Drugs) ]      [ PubMed (Literature) ]      [ DDI Datasets ]
-         │                           │                        │
-         └───────────────────────────┼────────────────────────┘
-                                     ▼
-                  [ CTD Big Data Ingestion Engines ]
-           (CTD_chem_gene_ixns.csv & CTD_genes_diseases.csv)
-                                     │
-                                     ▼
-                [ Unified Heterogeneous Graph Pipeline ]
-                   ├── Nodes: Drug, Literature, Gene, Disease
-                   └── Edges: Target, Interaction, Association
-                                     │
-                                     ▼
-                 [ Real-Time Cascade Mapping Logic ]
-         (CYP3A4 / CYP2D6 / CYP2C19 / CYP2E1 Multi-Pathway Analysis)
-                                     │
-                                     ▼
-              [ 🧍 Patient Digital Twin Interface (WebGL) ]
-    Real-time 3D Anatomy Rendering: Brain, Lungs, Heart, Liver Visual Alerts
+```bash
+python -m venv .venv
+.venv/Scripts/pip install -r requirements.txt   # .venv/bin/pip on Linux/macOS
 ```
-### 1. Heterogeneous Graph Schema
-The structural backbone is built on diverse entity representations (**Nodes**) and semantic relations (**Edges**):
-* **Node Entities (`gnn_nodes.csv`):**
-    * `Drug` (Sourced via PubChem CIDs)
-    * `Gene` / `Enzyme` (e.g., CYP450 superfamily: CYP3A4, CYP2D6, CYP2C19, CYP2E1)
-    * `Literature` (Sourced via PubMed IDs)
-    * `Disease` / `Pathology` (e.g., Hepatotoxicity, Arrhythmia, Neurotoxicity, Pulmonary Inflammation)
-* **Edge Relationships (`gnn_edges.csv`):**
-    * `DRUG_INTERACT_DRUG` (Drug-Drug Interactions)
-    * `DRUG_TARGETS_GENE` (Pharmacogenomic targets)
-    * `GENE_ASSOCIATED_WITH_DISEASE` (Downstream clinical outcomes)
-    * `DRUG_MENTIONED_IN_LITERATURE` (Text-mined contextual support)
 
-### 2. Biological Cascade Mechanism
-Rather than reviewing variables in isolation, the dashboard utilizes a mapping script (`cascade_map.csv`) that simulates chained physiological chain-reactions:
-$$\text{Primary/Co-administered Drug} \longrightarrow \text{Enzyme Inhibition/Induction} \longrightarrow \text{Target Organ Stress} \longrightarrow \text{Clinical Pathology}$$
+**1. Inputs.** Put these in `data/raw/`:
+- FAERS quarterly ASCII files `faers_ascii_2025q1.zip` … `faers_ascii_2025q4.zip` from the
+  [FDA FAERS download page](https://fis.fda.gov/extensions/FPD-QDE-FAERS/FPD-QDE-FAERS.html)
+- `CTD_curated_genes_diseases.csv.gz` from [CTD downloads](https://ctdbase.org/downloads/)
 
----
+**2. Build the dataset.**
 
-## 🚀 Key Features
+```bash
+python fetch_chembl.py      # approved drugs, mechanisms and human targets from the ChEMBL API -> data/processed/
+python build_dataset.py     # patient table, drug-gene and gene-organ edges (full and reduced CTD graph)
+```
 
-### 🧍 1. Anatomically Correct Patient Digital Twin Simulator
-* **WebGL Humanoid Mannequin:** Built natively within Streamlit using a custom JavaScript embedding of **Three.js** inside the HTML viewport component. It abandons basic primitives for a stylized humanoid form capturing the natural contours of the chest, waist, pelvis, and upper thighs.
-* **Spatial Organ Mapping:** Lungs are modeled as custom dual-lateral entities, the heart is accurately placed slightly left-of-center overlapping the thoracic depth plane, the liver sits beneath the right diaphragm rib cage, and the brain crowns the cranial sphere.
-* **Real-time Visual Alerts:** Whenever the inference engine flags a pathway conflict from a drug pairing, the specific target organs dynamically change emissive colors (e.g., Red for Heart Arrhythmia, Orange for Hepatotoxicity, Cyan for Pulmonary Inflammation, Magenta for Neurotoxicity) layered with a pulsing, mathematical WebGL ring animation indicating the severity of risk.
+**3. Train and evaluate.** Each command appends to the result files, so they can be rerun one at a time.
 
-### 📊 2. Comprehensive Cascade Table & Filter
-* Allows clinicians to isolate specific organ paths via interactive multi-select filtering.
-* Cross-references active enzymatic mechanics (`inhibit`, `activate`, `induce`) instantly against selected target compounds.
+```bash
+python train.py                                                       # main neural models, all three splits
+python train.py --models graph_random_patient,graph_no_atc_patient,atc_only_patient --out metrics_ablation.csv
+python train.py --models fp_patient,graph_fp_patient --save-preds     # fingerprint variants
+python train.py --splits cold_drug,atc_class --models patient_only,graph_patient,atc_only_patient --out metrics_preds.csv --save-preds
+python train.py --graph gene_organ_strict.csv --splits cold_drug,atc_class --models graph,graph_patient --out metrics_strict.csv
+python baselines.py                                                   # logistic regression, gradient boosting, structure k-NN
+python bootstrap.py                                                   # drug-level bootstrap intervals -> results/bootstrap.csv
+python paired.py                                                      # seed-paired differences -> results/paired.csv
+```
 
-### 📂 3. GNN Graph Anatomy Inventory
-* Provides automated metrics reflecting graph completeness, showing the total counts of loaded real-world nodes and edges.
-* Equipped with real-time distribution bar charts breaking down entity types to keep cross-validation transparent.
+The whole sequence takes roughly an hour on one laptop GPU, most of it in `baselines.py`. Training on the GPU is not bit-for-bit
+deterministic: single seeds can move by up to about 0.009 AUROC on the ATC-class split, while ten-seed means move
+by less than 0.001.
 
-### 🔬 4. Molecular & Receptor Profiling
-* Tracks 2D chemical blueprints through SMILES strings and formula breakdowns.
-* Maps compound binding patterns directly to specific multi-modal target receptors (e.g., Cyclooxygenase pathways) to explain the 'Why' behind every predicted graph edge.
+## Repository layout
 
-### 🔍 5. Strict Mode Pipeline Logger
-* An integrated interactive terminal emulator debugging log. It records execution ticks, data fetch integrity from input arrays, and hardware state validations.
+| Path | Purpose |
+|---|---|
+| `fetch_chembl.py`, `build_dataset.py` | Data download and preprocessing |
+| `train.py` | Splits, graph model, neural comparators and ablations |
+| `baselines.py` | Classical comparators on the same splits |
+| `bootstrap.py`, `paired.py` | Interval estimates reported in the paper |
+| `results/` | Per-seed metrics, summaries and run logs |
+| `paper/` | LaTeX source and PDF |
+| `demo.py` | Web page for the trained model and results, see below |
+| `app.py` and its CSV files | Earlier visual demo, see below |
 
----
+## Study web page (`demo.py`)
 
-## 💻 Hardware Optimization
+A Streamlit page that runs the trained graph-and-patient model (temporal split, seed 0, test AUROC 0.720). Pick a
+drug and patient attributes to see the eight organ scores next to the drug's rate in training reports, and how the
+scores change with age. Other tabs show the paper's results and limitations.
 
-To accommodate environments operating without dedicated server-side Nvidia GPU clusters, the data loading, caching routines, and matrix structural parsing are explicitly optimized to run natively as a **high-throughput CPU target**. 
+```bash
+python train.py --splits temporal --models graph_patient --seeds 1 --out metrics_demo.csv --save-preds   # creates the model file
+streamlit run demo.py
+```
 
-* **Target Device:** AMD Ryzen 9 Multi-core Processor.
-* **Execution Profile:** Optimized with aggressive data multi-threading and localized memory management. Leverages Streamlit’s `@st.cache_data` mechanics to pin immutable graph dictionaries in system RAM, preventing pipeline reload overhead during iterative parameter shifting.
+## Earlier visual demo (`app.py`)
 
----
+`app.py` is a Streamlit dashboard with a 3D body model, built before the study above. **It does not use the trained
+models or any result in this repository.** Its organ alerts come from a fixed placeholder rule that picks an enzyme
+from the digits in a drug's PubChem ID, and it flags a cross-interaction whenever two different drugs are selected.
+Treat it as an interface mock-up only.
 
-## 📂 Project Structure
+```bash
+streamlit run app.py
+```
 
-```text
-├── app.py                 # Core Streamlit Web UI Application & Three.js Canvas
-├── gnn_nodes.csv          # Extracted Node Entities (Drug, Gene, Disease, etc.)
-├── gnn_edges.csv          # Typed relationships mapping the Knowledge Graph
-├── cascade_map.csv        # Downstream physiological pathway rule matrix
-├── pubchem_sample.csv     # Chemical attributes, formulas, and SMILES strings
-├── receptor_mapping.csv   # Target receptor binding affinity data
-├── requirements.txt       # Production library dependencies
-└── README.md              # Documentation
+## Limitations
+
+FAERS is voluntary, has no exposure denominator and cannot establish causality. Organ labels come from a keyword
+mapping of MedDRA preferred terms (in `build_dataset.py`), not licensed MedDRA groupings, and were not reviewed by
+clinicians. Only the primary suspect drug is modeled. See the paper's Discussion section for the full list.

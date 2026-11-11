@@ -8,6 +8,8 @@ import numpy as np
 import pandas as pd
 import torch
 import torch.nn.functional as F
+from rdkit import Chem, RDLogger
+from rdkit.Chem import rdFingerprintGenerator
 from sklearn.metrics import average_precision_score, roc_auc_score
 from torch import nn
 from torch_geometric.data import HeteroData
@@ -17,11 +19,14 @@ from build_dataset import ORGANS
 
 ROOT = Path(__file__).parent
 DATA, RESULTS = ROOT / "data" / "processed", ROOT / "results"
-DEVICE = torch.device("cuda")
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")  # main() still requires a GPU; demo.py runs on CPU
 ATC_LEVELS = list("ABCDGHJLMNPRSV")
 WARM_MODELS = ["patient_only", "drug_id", "drug_id_patient", "graph", "graph_patient"]
 COLD_MODELS = ["patient_only", "graph", "graph_patient"]  # an ID embedding is untrained for unseen drugs
 ABLATION_MODELS = ["graph_random_patient", "graph_no_atc_patient", "atc_only_patient"]
+FP_BITS = 256  # same Morgan count fingerprint (radius 2) the classical baselines use
+PRED_DIR = None  # set by --save-preds; run() then stores test predictions for bootstrap.py
+RDLogger.DisableLog("rdApp.*")
 
 
 def ablate(kind, g, seed):
@@ -43,10 +48,10 @@ def ablate(kind, g, seed):
     return gg
 
 
-def load():
+def load(gene_organ="gene_organ.csv"):
     p = pd.read_csv(DATA / "patients.csv.gz")
     drugs = pd.read_csv(DATA / "drugs.csv").drop_duplicates("parent_chembl_id").set_index("parent_chembl_id")
-    dg, go = pd.read_csv(DATA / "drug_gene.csv"), pd.read_csv(DATA / "gene_organ.csv")
+    dg, go = pd.read_csv(DATA / "drug_gene.csv"), pd.read_csv(DATA / gene_organ)
     ids = sorted(set(p.drug_id) | set(dg.drug_id))
     genes = sorted(set(dg.gene_symbol) | set(go.gene_symbol))
     d_ix = {d: i for i, d in enumerate(ids)}
@@ -59,8 +64,16 @@ def load():
             if c[0] in ATC_LEVELS:
                 atc[d_ix[d], ATC_LEVELS.index(c[0])] = 1
 
+    fp = np.zeros((len(ids), FP_BITS), np.float32)  # zeros for drugs without a parsable SMILES
+    gen = rdFingerprintGenerator.GetMorganGenerator(radius=2, fpSize=FP_BITS)
+    for i, smi in enumerate(drugs.smiles.reindex(ids)):
+        mol = Chem.MolFromSmiles(smi) if isinstance(smi, str) else None
+        if mol:
+            fp[i] = gen.GetCountFingerprintAsNumPy(mol)
+
     g = HeteroData()
     g["drug"].x = atc
+    g["drug"].fp = torch.tensor(np.log1p(fp))  # input of the *fp* models only; the graph convs never read it
     g["gene"].num_nodes = len(genes)
     g["organ"].num_nodes = len(ORGANS)
     e1 = torch.tensor(np.array([dg.drug_id.map(d_ix).values, dg.gene_symbol.map(g_ix).values]))
@@ -71,6 +84,9 @@ def load():
     g["organ", "rev_linked", "gene"].edge_index = e2.flip(0)
 
     p["d"] = p.drug_id.map(d_ix)
+    atc3 = {d: ";".join(sorted({c[:4] for c in filter(None, codes.split(";"))}))
+            for d, codes in drugs.atc.reindex(ids).fillna("").items()}
+    p["atc3"] = p.drug_id.map(atc3)  # ATC level-3 classes of the report's drug, "" if none
     has_target = np.zeros(len(ids), bool)
     has_target[e1[0].unique().numpy()] = True
     return p, g, len(ids), has_target
@@ -90,7 +106,7 @@ def tensors(p, fit):
 class Net(nn.Module):
     def __init__(self, kind, g, n_drugs, dim=64):
         super().__init__()
-        self.use_patient = kind.endswith("_patient")
+        self.use_patient = "patient" in kind  # covers patient_only as well as *_patient
         self.use_graph = kind.startswith("graph") or kind.startswith("atc_only")
         self.use_id = kind.startswith("drug_id")
         if self.use_graph:
@@ -103,7 +119,11 @@ class Net(nn.Module):
         if self.use_id:
             self.drug = nn.Embedding(n_drugs, dim)
         self.patient = nn.Sequential(nn.Linear(7, dim), nn.ReLU(), nn.Linear(dim, dim))
-        width = dim * (int(self.use_patient) + int(self.use_graph or self.use_id))
+        self.use_fp = "fp" in kind  # fp_patient, graph_fp_patient: chemical structure as an extra drug input
+        if self.use_fp:
+            self.register_buffer("fp", g["drug"].fp)
+            self.fp_in = nn.Sequential(nn.Linear(FP_BITS, dim), nn.ReLU())
+        width = dim * (int(self.use_patient) + int(self.use_graph or self.use_id) + int(self.use_fp))
         self.head = nn.Sequential(nn.Linear(width, 128), nn.ReLU(), nn.Dropout(0.2), nn.Linear(128, len(ORGANS)))
 
     def drug_table(self):
@@ -120,6 +140,8 @@ class Net(nn.Module):
         table, parts = self.drug_table(), []
         if table is not None:
             parts.append(table[d])
+        if self.use_fp:
+            parts.append(self.fp_in(self.fp[d]))
         if self.use_patient:
             parts.append(self.patient(x))
         return self.head(torch.cat(parts, 1))
@@ -181,13 +203,27 @@ def split_train_val(df, seed):
     return df[~m], df[m]
 
 
-def splits(p, seed, has_target):
+SPLITS = ("temporal", "cold_drug", "atc_class")
+
+
+def splits(p, seed, has_target, which=SPLITS):
     """The exact held-out sets every model is compared on; baselines.py imports this too."""
-    yield "temporal", p[p.quarter != "2025q4"], p[p.quarter == "2025q4"]
-    pool = np.array(sorted(set(p.d[has_target[p.d.values]])))
-    held = np.random.default_rng(1000 + seed).choice(pool, len(pool) // 5, replace=False)
-    cold = p.d.isin(held)
-    yield "cold_drug", p[~cold], p[cold]
+    if "temporal" in which:
+        yield "temporal", p[p.quarter != "2025q4"], p[p.quarter == "2025q4"]
+    if "cold_drug" in which:
+        pool = np.array(sorted(set(p.d[has_target[p.d.values]])))
+        held = np.random.default_rng(1000 + seed).choice(pool, len(pool) // 5, replace=False)
+        cold = p.d.isin(held)
+        yield "cold_drug", p[~cold], p[cold]
+    if "atc_class" in which:
+        # hold out whole ATC level-3 classes, so no drug sharing a class with a test drug is trained on
+        dc = p.drop_duplicates("d").set_index("d").atc3
+        classes = sorted({c for s in dc[has_target[dc.index] & (dc != "")] for c in s.split(";")})
+        held_c = set(np.random.default_rng(2000 + seed).choice(classes, len(classes) // 5, replace=False))
+        touch = [d for d, s in dc.items() if s and held_c & set(s.split(";"))]
+        inside = [d for d, s in dc.items() if s and set(s.split(";")) <= held_c]
+        # test: drugs whose classes are all held out; train: drugs with no held-out class; the rest are dropped
+        yield "atc_class", p[~p.d.isin(touch)], p[p.d.isin(inside) & has_target[p.d.values]]
 
 
 def run(split, tr, te, kinds, g, n_drugs, seed, epochs):
@@ -203,9 +239,14 @@ def run(split, tr, te, kinds, g, n_drugs, seed, epochs):
         freq = rate.reindex(te.d).fillna(tr[ORGANS].mean()).values
         rows.append({"split": split, "model": "drug_frequency", "seed": seed, **scores(y, freq), "within_drug_auroc": 0.5})
 
+    if PRED_DIR:
+        np.savez_compressed(PRED_DIR / f"{split}_{seed}_test.npz", y=y.astype(np.uint8), d=d)
     for kind in kinds:
         net = fit(kind, ablate(kind, g, seed), n_drugs, train, val, seed, epochs)
         p = predict(net, test[0], test[1])
+        if PRED_DIR:
+            np.savez_compressed(PRED_DIR / f"{split}_{seed}_{kind}.npz", p=p)
+            torch.save(net.state_dict(), PRED_DIR / f"{split}_{seed}_{kind}.pt")  # demo.py loads temporal_0_graph_patient.pt
         rows.append({"split": split, "model": kind, "seed": seed, **scores(y, p),
                      "within_drug_auroc": within_drug_auroc(y, p, d)})
         print(rows[-1], flush=True)
@@ -218,11 +259,18 @@ def main():
     ap.add_argument("--epochs", type=int, default=40)
     ap.add_argument("--models", default=None, help="comma list replacing WARM/COLD sets, for ablation runs")
     ap.add_argument("--out", default="metrics.csv")
+    ap.add_argument("--splits", default=",".join(SPLITS), help="comma list of splits to run")
+    ap.add_argument("--graph", default="gene_organ.csv", help="gene-organ edge file in data/processed")
+    ap.add_argument("--save-preds", action="store_true", help="store test predictions in results/preds")
     args = ap.parse_args()
     assert torch.cuda.is_available(), "GPU required"
     RESULTS.mkdir(exist_ok=True)
+    if args.save_preds:
+        global PRED_DIR
+        PRED_DIR = RESULTS / "preds"
+        PRED_DIR.mkdir(exist_ok=True)
 
-    p, g, n_drugs, has_target = load()
+    p, g, n_drugs, has_target = load(args.graph)
     g = g.to(DEVICE)
     print(f"reports={len(p)} drugs={p.d.nunique()}", flush=True)
 
@@ -231,12 +279,14 @@ def main():
     out_f = RESULTS / args.out
     rows = []
     for seed in range(args.seeds):
-        for split, tr, te in splits(p, seed, has_target):
-            rows += run(split, tr, te, cold_m if split == "cold_drug" else warm, g, n_drugs, seed, args.epochs)
+        for split, tr, te in splits(p, seed, has_target, args.splits.split(",")):
+            print(f"seed={seed} split={split} train={len(tr)} test={len(te)} test_drugs={te.d.nunique()}", flush=True)
+            rows += run(split, tr, te, warm if split == "temporal" else cold_m, g, n_drugs, seed, args.epochs)
         df = pd.DataFrame(rows)
-        if out_f.exists():  # merge, not clobber: rows for this run's models replace prior ones, other models survive
+        if out_f.exists():  # merge, not clobber: this run's (split, model) rows replace prior ones, the rest survive
             old = pd.read_csv(out_f)
-            df = pd.concat([old[~old.model.isin(df.model.unique())], df], ignore_index=True)
+            ran = old.set_index(["split", "model"]).index.isin(df.set_index(["split", "model"]).index)
+            df = pd.concat([old[~ran], df], ignore_index=True)
         df.to_csv(out_f, index=False)
 
     if args.out == "metrics.csv":  # merged runs regenerating summaries

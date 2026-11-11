@@ -102,12 +102,21 @@ def build_graph(drugs):
     drug_gene = mech.merge(targets, on="target_chembl_id")[["drug_id", "gene_symbol", "action_type"]]
     drug_gene = drug_gene[drug_gene.drug_id.isin(drugs.parent_chembl_id)].drop_duplicates()
 
+    return drug_gene, gene_organ_edges()
+
+
+def gene_organ_edges(strict=False):
+    """strict drops associations that may encode drug knowledge (drug-induced diseases, therapeutic-only evidence),
+    to test whether held-out drugs leak into the graph through CTD."""
     cols = ["GeneSymbol", "GeneID", "DiseaseName", "DiseaseID", "DirectEvidence", "OmimIDs", "PubMedIDs"]
     gd = pd.read_csv(RAW / "CTD_curated_genes_diseases.csv.gz", comment="#", names=cols, low_memory=False)
+    if strict:
+        drug_related = gd.DiseaseName.str.contains(r"Induced|Toxicity|Drug-Related|Poisoning", case=False, na=False)
+        gd = gd[~drug_related & (gd.DirectEvidence != "therapeutic")]
     gd["organ"] = gd.DiseaseName.map(organs_of)
     gene_organ = gd.explode("organ").dropna(subset=["organ"])[["GeneSymbol", "organ"]].drop_duplicates()
     gene_organ.columns = ["gene_symbol", "organ"]
-    return drug_gene, gene_organ
+    return gene_organ
 
 
 def main():
@@ -122,6 +131,7 @@ def main():
     patients.to_csv(OUT / "patients.csv.gz", index=False)
     drug_gene.to_csv(OUT / "drug_gene.csv", index=False)
     gene_organ.to_csv(OUT / "gene_organ.csv", index=False)
+    gene_organ_edges(strict=True).to_csv(OUT / "gene_organ_strict.csv", index=False)
 
     print(f"drugs in reports={patients.drug_id.nunique()} drug-gene edges={len(drug_gene)} gene-organ edges={len(gene_organ)}")
     print("label rates:", patients[ORGANS].mean().round(3).to_dict())

@@ -14,7 +14,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
 from build_dataset import ORGANS
-from train import DATA, RESULTS, load, scores, splits, tensors, within_drug_auroc
+from train import DATA, RESULTS, SPLITS, load, scores, splits, tensors, within_drug_auroc
 
 RDLogger.DisableLog("rdApp.*")
 MODELS = ["logistic_regression", "gradient_boosting", "structure_knn"]
@@ -113,7 +113,7 @@ def main():
 
     new = pd.DataFrame(rows)
     new = new[new.seed < args.seeds]
-    assert len(new) == args.seeds * 2 * len(MODELS) and set(new.columns) == set(old.columns), len(new)
+    assert len(new) == args.seeds * len(SPLITS) * len(MODELS) and set(new.columns) == set(old.columns), len(new)
     out = pd.concat([old[~old.model.isin(MODELS)], new], ignore_index=True)
     out.to_csv(RESULTS / "metrics.csv", index=False)
     summary = out.groupby(["split", "model"])[["auroc", "auprc", "within_drug_auroc"]].agg(["mean", "std"]).round(4)

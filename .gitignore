@@ -7,3 +7,4 @@ texput.log
 paper/*.aux
 paper/*.log
 paper/*.out
+results/preds/

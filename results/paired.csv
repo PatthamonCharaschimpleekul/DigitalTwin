@@ -8,3 +8,12 @@ temporal,drug_id_patient,gradient_boosting,0.0005,0.0005,0.0001,0.0008,9,10
 cold_drug,graph_patient,gradient_boosting,0.0177,0.0091,0.0112,0.0242,10,10
 cold_drug,graph_patient,logistic_regression,0.0662,0.0114,0.0581,0.0743,10,10
 cold_drug,graph_patient,structure_knn,0.085,0.0162,0.0734,0.0965,10,10
+cold_drug,strict_graph_patient,graph_patient,0.0016,0.0079,-0.004,0.0073,6,10
+atc_class,graph_patient,patient_only,0.0166,0.0186,0.0033,0.0299,8,10
+atc_class,graph_patient,graph,0.0259,0.0084,0.0199,0.0319,10,10
+atc_class,graph_patient,gradient_boosting,-0.0021,0.0137,-0.0119,0.0077,4,10
+atc_class,graph_patient,logistic_regression,0.0302,0.0201,0.0158,0.0445,10,10
+atc_class,graph_patient,structure_knn,0.0693,0.0381,0.042,0.0966,10,10
+atc_class,graph_patient,atc_only_patient,-0.0046,0.012,-0.0132,0.004,3,10
+atc_class,graph_patient,graph_random_patient,0.0169,0.0123,0.0081,0.0257,9,10
+atc_class,strict_graph_patient,graph_patient,0.0027,0.0129,-0.0065,0.0119,5,10
