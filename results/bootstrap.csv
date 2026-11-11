@@ -1,0 +1,13 @@
+split,a,b,mean_diff,boot_ci95_low,boot_ci95_high,p_boot_a_better,B
+cold_drug,graph_patient,patient_only,0.0598,0.0485,0.0672,1.0,1000
+cold_drug,graph_patient,gradient_boosting,0.0177,0.0105,0.0238,1.0,1000
+cold_drug,graph_patient,atc_only_patient,0.0198,0.0116,0.0259,1.0,1000
+cold_drug,graph_fp_patient,graph_patient,-0.0057,-0.0106,-0.0012,0.008,1000
+cold_drug,graph_fp_patient,gradient_boosting,0.012,0.004,0.0182,0.999,1000
+cold_drug,fp_patient,gradient_boosting,-0.0281,-0.0365,-0.0194,0.0,1000
+atc_class,graph_patient,patient_only,0.0167,0.0041,0.0291,0.998,1000
+atc_class,graph_patient,gradient_boosting,-0.0021,-0.0106,0.0055,0.283,1000
+atc_class,graph_patient,atc_only_patient,-0.0045,-0.0145,0.0063,0.172,1000
+atc_class,graph_fp_patient,graph_patient,-0.0033,-0.0096,0.002,0.094,1000
+atc_class,graph_fp_patient,gradient_boosting,-0.0053,-0.0147,0.002,0.062,1000
+atc_class,fp_patient,gradient_boosting,-0.0346,-0.0475,-0.0227,0.0,1000

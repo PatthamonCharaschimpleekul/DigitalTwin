@@ -1,0 +1,1 @@
+{"seeds": 1, "epochs": 40, "models": "graph_patient", "out": "metrics_demo.csv", "splits": "temporal", "graph": "gene_organ.csv", "save_preds": true}

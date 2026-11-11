@@ -1,0 +1,6 @@
+split,a,b,mean_diff,sd,seeds_a_wins,n
+temporal,drug_id_patient,drug_frequency,0.0204,0.0005,5,5
+temporal,drug_id_patient,graph_patient,0.0111,0.0006,5,5
+temporal,graph_patient,graph,0.0264,0.0009,5,5
+cold_drug,graph_patient,patient_only,0.0581,0.0121,5,5
+cold_drug,graph_patient,graph,0.0356,0.0072,5,5

@@ -1,0 +1,219 @@
+\documentclass[conference,letterpaper]{IEEEtran}
+\usepackage{booktabs}
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{document}
+
+\title{Patient-Conditioned Graph Learning for Organ-Level Adverse Drug Event Prediction from Spontaneous Reports}
+\author{\IEEEauthorblockN{[Author names]}
+\IEEEauthorblockA{[Affiliation, city, country]\\ {[email]}}}
+\maketitle
+
+\begin{abstract}
+The organ-level consequences of a prescription may depend on the patient. We predict which of eight organ systems appear in an adverse event report, given a drug and basic patient attributes, using 309,424 FDA Adverse Event Reporting System (FAERS) reports from 2025 and a drug--gene--organ graph built from ChEMBL mechanisms and curated Comparative Toxicogenomics Database (CTD) associations. We compare drug identity, mechanism graph, chemical structure and patient attributes on three splits of increasing novelty. With report history, a drug-identity model with patient features performs best (macro AUROC 0.732), matched by gradient boosting (0.731). On held-out drugs, the graph-and-patient model reaches 0.643 and exceeds patient features alone by 0.060 (95\% drug-level bootstrap interval 0.049--0.067) and gradient boosting by 0.018 (0.011--0.024). Shuffling drug--target links removes this gain, and removing CTD associations that could encode drug knowledge leaves it unchanged. When whole therapeutic classes are held out, the graph still exceeds patient features by 0.017 (0.004--0.029) but no longer exceeds gradient boosting or a drug-class-only model, and adding chemical fingerprints to the graph does not help. Discrimination among patients taking the same drug stays at 0.56--0.59. Mechanism graphs help new drugs from known classes, not new classes, and the results do not support individual clinical use.
+\end{abstract}
+
+\begin{IEEEkeywords}
+adverse drug events, graph neural networks, pharmacovigilance, FAERS, drug safety
+\end{IEEEkeywords}
+
+\section{Introduction}
+A drug can act on many targets, and those targets can be linked to several organ systems. Tracing these links by hand is impractical during routine prescribing. Patient digital twins, computational models of individual patients~\cite{bjornsson2020,katsoulakis2024}, motivate estimating which organ systems deserve attention for a given patient and drug; we study one narrow component of that goal.
+
+Graph learning has been applied to polypharmacy side effects~\cite{zitnik2018} and drug repurposing~\cite{huang2024}, and spontaneous reports have long supported signal detection~\cite{tatonetti2012}. We ask how much mechanism knowledge, chemical structure and patient attributes each contribute to organ-level prediction, and how far the answer holds as test drugs become less similar to training drugs.
+
+Our contributions are: (1) a reproducible pipeline linking FAERS reports to a drug--gene--organ graph; (2) a controlled comparison on seen drugs, held-out drugs and held-out therapeutic classes, including classical comparators that use chemical structure; (3) graph ablations and a knowledge-leakage check that identify which part of the graph carries the gain; and (4) a within-drug metric that measures patient-level discrimination, which aggregate scores can conceal.
+
+\section{Related Work}
+Decagon modeled polypharmacy side effects as link prediction on a multimodal graph of drugs and proteins~\cite{zitnik2018}. TxGNN used a medical knowledge graph for zero-shot drug repurposing~\cite{huang2024}. Tatonetti \emph{et al.} used adverse event reports to study drug effects and interactions while addressing confounding~\cite{tatonetti2012}. Side-effect profiles have been predicted from chemical fragments~\cite{pauwels2011}, from combined chemical, biological and phenotypic properties~\cite{liu2012}, and, for side-effect frequencies, by matrix decomposition~\cite{galeano2020}, mostly using label-derived resources such as SIDER~\cite{kuhn2016}. Bean \emph{et al.} built a knowledge graph of drugs, targets, indications and adverse reactions and validated its predictions in electronic health records~\cite{bean2017}. Patient-level prediction has also been studied. PreciseADR learned patient embeddings with a heterogeneous GNN over patients, diseases, drugs and reactions from FAERS reports~\cite{gao2025}. Farnoush \emph{et al.} combined demographics with chemical, molecular and biological drug features to predict 30 reactions in FAERS~\cite{farnoush2024}, and Zhou \emph{et al.} modeled patients as subgraphs of diagnosis codes~\cite{zhou2024}. These studies aim at predictive accuracy. We instead separate drug history, mechanism structure, chemical structure and patient attributes at the organ level, including among patients taking the same drug, and test how far each gain holds for unseen drugs and therapeutic classes. We do not claim a new architecture; our contribution is the controlled evaluation.
+
+\section{Data}
+\textbf{Reports.} We used the four 2025 FAERS quarterly files. We kept the latest version of each case, as is standard for FAERS~\cite{sakaeda2013}, and matched the primary suspect ingredient to ChEMBL approved small molecules~\cite{zdrazil2024} after removing common salt terms. Of 1,469,305 cases, 695,719 matched a drug, and 309,424 had at least one organ-mapped event, covering 1,167 drugs. Patient inputs were age, sex, weight, missingness indicators and the number of other reported drugs. Among the 78,880 fourth-quarter test reports, age was present in 70.3\% and weight in 25.9\%.
+
+\textbf{Labels.} Reported MedDRA preferred terms~\cite{brown1999} were mapped by a transparent keyword list to eight systems: liver, heart, nervous, kidney, lung, gastrointestinal, skin and blood. Table~\ref{tab:data} lists report counts and label prevalence. Only 26.3\% of event rows mapped to an organ, because many terms, such as ``Off label use'' and ``Drug ineffective'', do not describe an organ.
+
+\begin{table}[t]
+\centering
+\caption{Dataset summary after filtering.}
+\label{tab:data}
+\footnotesize
+\begin{tabular}{lrlr}
+\toprule
+Quarter & Reports & Organ label & Prevalence \\
+\midrule
+2025 Q1 & 72,430 & Liver & 9.9\% \\
+2025 Q2 & 72,841 & Heart & 14.5\% \\
+2025 Q3 & 85,273 & Nervous & 25.7\% \\
+2025 Q4 & 78,880 & Kidney & 9.8\% \\
+ & & Lung & 23.3\% \\
+ & & Gastrointestinal & 29.7\% \\
+ & & Skin & 18.0\% \\
+ & & Blood & 10.6\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Graph.} The graph has drug, gene and organ nodes. ChEMBL mechanisms give 4,716 drug--gene edges over 1,363 drugs, restricted to human targets. Curated CTD gene--disease associations~\cite{davis2023}, mapped with the same keyword list, give 6,533 gene--organ edges over 4,800 genes, and 86.8\% of reports involve a drug with at least one target. Some CTD associations may encode knowledge about drugs, such as genes linked to chemical and drug induced liver injury. A reduced graph that drops drug-induced disease terms and therapeutic-only evidence keeps 6,028 edges and serves as a leakage check.
+
+\textbf{Ethics and availability.} All sources are public, and FAERS reports are de-identified, so no ethics approval was required. Code, the keyword mapping, per-seed results and the scripts that produce every reported interval are available at [repository URL].
+
+\section{Methods}
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[font=\footnotesize, node distance=6mm and 9mm, box/.style={draw, rounded corners, align=center, minimum height=9mm, text width=27mm}, >={Stealth}]
+\node[box] (f) {FAERS 2025 reports\\age, sex, weight, drugs};
+\node[box, below=of f] (c) {ChEMBL mechanisms\\CTD gene--disease};
+\node[box, right=of f] (p) {Patient encoder};
+\node[box, right=of c] (g) {Drug--gene--organ\\GraphSAGE encoder};
+\node[box] (h) at ($(p)!0.5!(g)+(42mm,0)$) {Fusion MLP};
+\node[box, right=of h] (o) {Eight organ-system\\event scores};
+\draw[->] (f) -- (p);
+\draw[->] (c) -- (g);
+\draw[->] (p) -- (h);
+\draw[->] (g) -- (h);
+\draw[->] (h) -- (o);
+\end{tikzpicture}
+\caption{Overview of the pipeline. Patient attributes and mechanism knowledge are encoded separately, then combined to score organ systems for a report.}
+\label{fig:pipe}
+\end{figure*}
+
+\textbf{Model.} Fig.~\ref{fig:pipe} summarizes the system. A two-layer heterogeneous GraphSAGE encoder~\cite{hamilton2017} produces a drug embedding $h_d$ from first-level ATC features and learned gene and organ embeddings. For each relation $r$, a layer aggregates neighbors and sums over relations:
+\begin{equation}
+h_v^{(l+1)} = \sigma\Big(\sum_{r} \mathrm{SAGE}_r\big(h_v^{(l)}, \{h_u^{(l)} : u \in \mathcal{N}_r(v)\}\big)\Big).
+\end{equation}
+A patient encoder maps the seven patient inputs $x$ to a 64-dimensional vector $z=f(x)$. A multilayer perceptron then gives organ probabilities,
+\begin{equation}
+\hat{y} = \mathrm{sigmoid}\big(g([h_d; z])\big) \in [0,1]^8,
+\end{equation}
+trained with binary cross-entropy over the eight organ labels. Because $h_d$ is computed from target neighbors and ATC features, the encoder can represent a drug with no training reports.
+
+\textbf{Neural comparators.} We compare a global label rate, per-drug training frequency, patient features only, a learned drug-identity embedding with and without patient features, and the graph encoder with and without patient features. Fingerprint variants add a 256-dimensional Morgan count fingerprint (radius 2)~\cite{rogers2010}, log-transformed and passed through a linear layer, to the patient encoder alone or to the graph and patient encoders.
+
+\textbf{Classical comparators.} Logistic regression and histogram gradient boosting are trained per organ on the patient inputs, the first-level ATC vector and the same fingerprint. A structure $k$-nearest-neighbor model scores a test drug by the organ rates of its ten most similar training drugs, weighted by Tanimoto similarity of 1024-bit Morgan fingerprints. They are fit on the full training split, including the 10\% the neural models hold out for early stopping.
+
+\textbf{Ablations.} We retrain the graph-and-patient model with (i) the ATC input replaced by a constant, (ii) all drug--target edges removed, leaving ATC class as the only drug input, (iii) the gene endpoints of drug--target edges randomly permuted, so that each drug keeps its number of targets but not their identity, and (iv) the reduced CTD graph.
+
+\textbf{Evaluation.} The temporal split trains on the first three quarters and tests on the fourth. The cold-drug split holds out 20\% of drugs with graph targets, removing all of their reports from training while keeping their target edges. The ATC-class split holds out 25 of the 126 ATC level-3 classes that contain reported drugs with targets. Test drugs are those whose classes are all held out (83--204 drugs and 16,592--57,300 reports per seed), and every drug in a held-out class is removed from training, so no training drug shares a therapeutic class with a test drug. Identity models are excluded from both held-out splits because unseen drugs have untrained embeddings. Each setting uses ten seeds, which vary initialization and the validation sample; the held-out splits also draw new drugs or classes per seed. Drug frequency, logistic regression and $k$-NN are deterministic given the training data, so their SD on the fixed temporal split is zero. All models share the same splits per seed.
+
+We report macro AUROC and AUPRC over organs. Differences are paired by seed. On the held-out splits, 95\% intervals come from a drug-level cluster bootstrap: each of 1,000 replicates resamples test drugs within every seed and averages the paired difference over seeds, so the interval reflects which drugs happen to be tested. Elsewhere, intervals are across seeds and describe training variation only. Within-drug AUROC is computed for drugs with at least 200 test reports and organs with at least 20 positive and 20 negative reports in that drug, then averaged. Models without patient inputs score 0.5 by construction. All neural models share one untuned configuration: AdamW (learning rate $2\times10^{-3}$, weight decay $10^{-4}$), batch size 8,192, at most 40 epochs with early stopping after five epochs without improvement on a 10\% validation sample, and a fusion head with 128 hidden units and dropout 0.2. Classical models use library defaults. Training used one RTX 5070 Ti Laptop GPU.
+
+\section{Results}
+\begin{table*}[t]
+\centering
+\caption{Test performance, mean $\pm$ SD over ten seeds. Identity models and drug frequency need report history and are evaluated on the temporal split only.}
+\label{tab:main}
+\footnotesize
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{2}{c}{Temporal} & \multicolumn{2}{c}{Cold drug} & \multicolumn{2}{c}{ATC class} \\
+Model & AUROC & AUPRC & AUROC & AUPRC & AUROC & AUPRC \\
+\midrule
+Global rate & .500 $\pm$ .001 & .181 $\pm$ .000 & .501 $\pm$ .001 & .177 $\pm$ .003 & .501 $\pm$ .001 & .175 $\pm$ .005 \\
+Drug frequency & .711 $\pm$ .000 & .367 $\pm$ .000 & -- & -- & -- & -- \\
+Patient only & .592 $\pm$ .000 & .258 $\pm$ .001 & .583 $\pm$ .009 & .248 $\pm$ .015 & .577 $\pm$ .011 & .231 $\pm$ .012 \\
+Logistic regression & .702 $\pm$ .000 & .350 $\pm$ .000 & .577 $\pm$ .011 & .223 $\pm$ .012 & .563 $\pm$ .023 & .217 $\pm$ .019 \\
+Gradient boosting & .731 $\pm$ .000 & \textbf{.400} $\pm$ .000 & .625 $\pm$ .020 & .279 $\pm$ .019 & \textbf{.595} $\pm$ .026 & \textbf{.257} $\pm$ .025 \\
+Structure $k$-NN & .650 $\pm$ .000 & .293 $\pm$ .000 & .558 $\pm$ .018 & .216 $\pm$ .016 & .524 $\pm$ .022 & .197 $\pm$ .014 \\
+Drug ID & .710 $\pm$ .001 & .368 $\pm$ .001 & -- & -- & -- & -- \\
+Drug ID + patient & \textbf{.732} $\pm$ .000 & .397 $\pm$ .000 & -- & -- & -- & -- \\
+Graph & .694 $\pm$ .000 & .345 $\pm$ .001 & .609 $\pm$ .015 & .251 $\pm$ .013 & .567 $\pm$ .025 & .232 $\pm$ .023 \\
+Graph + patient & .720 $\pm$ .001 & .380 $\pm$ .001 & \textbf{.643} $\pm$ .016 & \textbf{.287} $\pm$ .017 & .593 $\pm$ .026 & .253 $\pm$ .023 \\
+Fingerprint + patient & .727 $\pm$ .000 & .392 $\pm$ .001 & .597 $\pm$ .022 & .251 $\pm$ .020 & .561 $\pm$ .016 & .220 $\pm$ .014 \\
+Graph + fingerprint + patient & .730 $\pm$ .000 & .396 $\pm$ .001 & .637 $\pm$ .015 & .283 $\pm$ .015 & .590 $\pm$ .021 & .247 $\pm$ .018 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Table~\ref{tab:main} gives the main results. \textbf{Seen drugs.} On the temporal split, adding patient features to drug identity improved AUROC over per-drug frequency by 0.021 (0.020--0.021), in all ten seeds. Gradient boosting came within 0.001 of this model and had the best AUPRC. Its fingerprints identify each seen drug, so it has access to the same report history. The graph model with patient features was 0.012 below the identity model in every seed, so mechanism structure gave no benefit when a drug already had report history.
+
+\textbf{Held-out drugs.} On unseen drugs the pattern changed. Graph plus patient features exceeded patient features alone by 0.060 (0.049--0.067) and gradient boosting by 0.018 (0.011--0.024). It also exceeded the graph alone by 0.034, logistic regression by 0.066 and structure $k$-NN by 0.085, in all ten seeds.
+
+\textbf{Held-out classes.} When whole ATC classes were held out, every model dropped. Graph plus patient features still exceeded patient features alone by 0.017 (0.004--0.029), the graph alone by 0.026, logistic regression by 0.030 and $k$-NN by 0.069. It no longer exceeded gradient boosting ($-$0.002, $-$0.011 to 0.006).
+
+\textbf{Adding structure.} Fingerprints did not improve the graph model on unseen drugs ($-$0.006, $-$0.011 to $-$0.001) or unseen classes ($-$0.003, $-$0.010 to 0.002). The neural fingerprint model trailed gradient boosting on both held-out splits, by 0.028 and 0.035. In this setting, structure and mechanism inputs appear to carry overlapping information.
+
+\begin{table}[t]
+\centering
+\caption{Ablations of the graph-and-patient model. $\Delta$: paired AUROC difference from the full model, with 95\% interval across ten seeds. The reduced CTD graph tests leakage into unseen drugs and was not run on the temporal split.}
+\label{tab:abl}
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lccc}
+\toprule
+ & Temporal & Cold drug & ATC class \\
+Variant & AUROC & $\Delta$ & $\Delta$ \\
+\midrule
+Full model & .720 & .643 & .593 \\
+No ATC input & .709 & $+$.001 ($-$.004, .006) & $+$.004 ($-$.002, .011) \\
+No target edges & .650 & $-$.020 ($-$.026, $-$.013) & $+$.005 ($-$.004, .013) \\
+Shuffled targets & .721 & $-$.076 ($-$.090, $-$.063) & $-$.017 ($-$.026, $-$.008) \\
+Reduced CTD graph & -- & $+$.002 ($-$.004, .007) & $+$.003 ($-$.007, .012) \\
+Patient only & .592 & $-$.060 ($-$.070, $-$.050) & $-$.017 ($-$.030, $-$.003) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:abl} shows where the gain comes from. On unseen drugs, shuffling target edges lowered AUROC by 0.076, to below the patient-only model in nine of ten seeds, so incorrect targets mislead the model rather than simply adding noise. ATC class without target edges recovered 0.040 of the 0.060 gain over patient features, and the true targets added a further 0.020. The reduced CTD graph changed AUROC by at most 0.003 on either held-out split, so the gain does not come from associations that encode drug knowledge. On unseen classes, ATC class alone still beat patient features by 0.021 in all ten seeds, but target edges added nothing beyond it, while shuffled targets removed the whole gain over patient features. On the temporal split, shuffled edges matched the full model, consistent with the graph acting mainly as a drug identifier when report history exists.
+
+Within-drug AUROC stayed between 0.56 and 0.59 for every model with patient inputs on all splits. The patient-only model already reached 0.568 on the temporal split, so most of this signal comes from the attributes themselves.
+
+Table~\ref{tab:organ} shows that performance varies by organ. With report history, blood and liver events were easiest to rank and gastrointestinal events hardest. On unseen drugs, the graph gave its largest gains over patient features for kidney (+0.085), blood (+0.082) and nervous system events (+0.078), and exceeded gradient boosting for every organ except heart ($-$0.003). On unseen classes, its gains over patient features were confined to skin (+0.056), blood (+0.053) and nervous system events (+0.041).
+
+\begin{table}[t]
+\centering
+\caption{Mean AUROC by organ system over ten seeds. GB: gradient boosting; pat.: patient features.}
+\label{tab:organ}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcccc}
+\toprule
+ & Temporal & \multicolumn{3}{c}{Cold drug} \\
+Organ & ID + pat. & Patient & GB & Graph + pat. \\
+\midrule
+Liver & .775 & .610 & .629 & .659 \\
+Heart & .710 & .575 & .614 & .611 \\
+Nervous & .696 & .558 & .619 & .636 \\
+Kidney & .744 & .586 & .649 & .671 \\
+Lung & .725 & .588 & .618 & .631 \\
+Gastrointestinal & .685 & .574 & .591 & .613 \\
+Skin & .713 & .573 & .633 & .639 \\
+Blood & .805 & .601 & .650 & .683 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Discussion and Limitations}
+The practical finding is graded by novelty. Report history is the strongest signal for established drugs. For a new drug from a known therapeutic class, correct drug--target links add information that neither drug class, chemical structure nor patient attributes provide. For a drug from an unseen class, the graph still beats patient features but adds nothing over drug class or chemical structure, so its benefit depends on related drugs having report history. This is relevant to newly marketed drugs, although our held-out drugs are approved drugs with existing mechanism annotations.
+
+These results describe patterns in reports, not risk. FAERS is voluntary, has no exposure denominator, and cannot establish causality. Reports are subject to under-reporting and stimulated reporting, and patient attributes may act as proxies for the indication. We condition on reports with at least one organ-mapped event, so outputs are not incidence estimates. Keyword labels approximate standardized MedDRA grouping and were not reviewed by clinicians. Patient inputs omit laboratory values, comorbidities, dose and genotype, and weight is largely missing. Only the primary suspect drug is modeled, so drug--drug interactions are not addressed. The class-level test sets are small and vary by seed, and single runs on that split varied by up to 0.009 AUROC across repeated training on the GPU, so we report only means over seeds. The edge shuffle preserves each drug's number of targets but not each gene's degree, and all ablations use a single architecture.
+
+The current system is therefore a research prototype and must not guide treatment. Within-drug performance of 0.56--0.59 is far from what individual decisions would require.
+
+\section{Conclusion}
+We linked real adverse event reports to a mechanism graph and separated what each information source contributes. Patient attributes gave a small, consistent gain. On drugs excluded from training, the graph outperformed patient-only, chemical-structure and fingerprint-boosting comparators, the gain depended on correct target links, and it survived removal of potentially leaking associations. When whole therapeutic classes were excluded, the graph still beat patient features alone but only matched the drug-class and structure comparators. Future work should test mechanism inputs that generalize across classes and validate these findings on clinical records with laboratory values, standardized MedDRA labels and clinician review.
+
+\begin{thebibliography}{99}
+\bibitem{bjornsson2020} B. Bj\"{o}rnsson \emph{et al.}, ``Digital twins to personalize medicine,'' \emph{Genome Medicine}, vol. 12, art. no. 4, 2020, doi: 10.1186/s13073-019-0701-3.
+\bibitem{katsoulakis2024} E. Katsoulakis \emph{et al.}, ``Digital twins for health: a scoping review,'' \emph{npj Digital Medicine}, vol. 7, art. no. 77, 2024, doi: 10.1038/s41746-024-01073-0.
+\bibitem{zitnik2018} M. Zitnik, M. Agrawal, and J. Leskovec, ``Modeling polypharmacy side effects with graph convolutional networks,'' \emph{Bioinformatics}, vol. 34, no. 13, pp. i457--i466, 2018.
+\bibitem{huang2024} K. Huang \emph{et al.}, ``A foundation model for clinician-centered drug repurposing,'' \emph{Nature Medicine}, 2024, doi: 10.1038/s41591-024-03233-x.
+\bibitem{tatonetti2012} N. P. Tatonetti, P. P. Ye, R. Daneshjou, and R. B. Altman, ``Data-driven prediction of drug effects and interactions,'' \emph{Science Translational Medicine}, vol. 4, no. 125, 2012.
+\bibitem{pauwels2011} E. Pauwels, V. Stoven, and Y. Yamanishi, ``Predicting drug side-effect profiles: a chemical fragment-based approach,'' \emph{BMC Bioinformatics}, vol. 12, art. no. 169, 2011, doi: 10.1186/1471-2105-12-169.
+\bibitem{liu2012} M. Liu \emph{et al.}, ``Large-scale prediction of adverse drug reactions using chemical, biological, and phenotypic properties of drugs,'' \emph{J. Am. Med. Inform. Assoc.}, vol. 19, no. e1, pp. e28--e35, 2012.
+\bibitem{galeano2020} D. Galeano, S. Li, M. Gerstein, and A. Paccanaro, ``Predicting the frequencies of drug side effects,'' \emph{Nature Communications}, vol. 11, art. no. 4575, 2020, doi: 10.1038/s41467-020-18305-y.
+\bibitem{kuhn2016} M. Kuhn, I. Letunic, L. J. Jensen, and P. Bork, ``The SIDER database of drugs and side effects,'' \emph{Nucleic Acids Research}, vol. 44, no. D1, pp. D1075--D1079, 2016.
+\bibitem{bean2017} D. M. Bean \emph{et al.}, ``Knowledge graph prediction of unknown adverse drug reactions and validation in electronic health records,'' \emph{Scientific Reports}, vol. 7, art. no. 16416, 2017.
+\bibitem{gao2025} Y. Gao \emph{et al.}, ``Precision adverse drug reactions prediction with heterogeneous graph neural network,'' \emph{Advanced Science}, vol. 12, no. 4, art. no. 2404671, 2025, doi: 10.1002/advs.202404671.
+\bibitem{farnoush2024} A. Farnoush \emph{et al.}, ``Prediction of adverse drug reactions using demographic and non-clinical drug characteristics in FAERS data,'' \emph{Scientific Reports}, vol. 14, art. no. 23636, 2024, doi: 10.1038/s41598-024-74505-2.
+\bibitem{zhou2024} F. Zhou, M. Khushi, J. Brett, and S. Uddin, ``Graph neural network-based subgraph analysis for predicting adverse drug events,'' \emph{Computers in Biology and Medicine}, vol. 183, art. no. 109282, 2024, doi: 10.1016/j.compbiomed.2024.109282.
+\bibitem{sakaeda2013} T. Sakaeda, A. Tamon, K. Kadoyama, and Y. Okuno, ``Data mining of the public version of the FDA Adverse Event Reporting System,'' \emph{Int. J. Med. Sci.}, vol. 10, no. 7, pp. 796--803, 2013.
+\bibitem{zdrazil2024} B. Zdrazil \emph{et al.}, ``The ChEMBL Database in 2023: a drug discovery platform spanning multiple bioactivity data types and time periods,'' \emph{Nucleic Acids Research}, vol. 52, no. D1, pp. D1180--D1192, 2024.
+\bibitem{brown1999} E. G. Brown, L. Wood, and S. Wood, ``The Medical Dictionary for Regulatory Activities (MedDRA),'' \emph{Drug Safety}, vol. 20, no. 2, pp. 109--117, 1999.
+\bibitem{davis2023} A. P. Davis \emph{et al.}, ``Comparative Toxicogenomics Database (CTD): update 2023,'' \emph{Nucleic Acids Research}, vol. 51, no. D1, pp. D1257--D1262, 2023.
+\bibitem{hamilton2017} W. Hamilton, Z. Ying, and J. Leskovec, ``Inductive representation learning on large graphs,'' in \emph{Advances in Neural Information Processing Systems}, 2017.
+\bibitem{rogers2010} D. Rogers and M. Hahn, ``Extended-connectivity fingerprints,'' \emph{J. Chem. Inf. Model.}, vol. 50, no. 5, pp. 742--754, 2010.
+\end{thebibliography}
+
+\end{document}

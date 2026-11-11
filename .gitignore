@@ -1,0 +1,10 @@
+.venv/
+venv/
+__pycache__/
+data/
+*.bak_5seeds
+texput.log
+paper/*.aux
+paper/*.log
+paper/*.out
+results/preds/
